@@ -28,7 +28,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/orezia/") //TODO change repo URL
+            url = uri("https://maven.pkg.github.com/Orezia/OreziaRankUp-api")
             credentials {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
