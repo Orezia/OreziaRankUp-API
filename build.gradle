@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+    implementation "fr.orezia.mc:OreziaCore-api:1.0-SNAPSHOT"
     compileOnly 'io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT'
 }
 

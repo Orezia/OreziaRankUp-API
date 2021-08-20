@@ -1,6 +1,6 @@
 package fr.orezia.mc.rankup.api;
 
-import fr.orezia.mc.oreziacore.api.annotation.PublicApi;
+import fr.orezia.mc.core.api.annotation.PublicApi;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -12,6 +12,5 @@ import org.jetbrains.annotations.NotNull;
 public interface OreziaRankUpApi {
 
   @PublicApi
-  @NotNull
-  String pluginName();
+  @NotNull String pluginName();
 }
