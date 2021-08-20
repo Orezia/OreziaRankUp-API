@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
 }
 
@@ -9,6 +9,8 @@ version '1.0-SNAPSHOT'
 java {
     sourceCompatibility(JavaVersion.VERSION_16)
     targetCompatibility(JavaVersion.VERSION_16)
+    withSourcesJar()
+    withJavadocJar()
 }
 
 repositories {
@@ -20,8 +22,7 @@ repositories {
 }
 
 dependencies {
-    implementation "fr.orezia.mc:OreziaCore-api:1.0-SNAPSHOT"
-    compileOnly 'io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT'
+    api "fr.orezia.mc:OreziaCore-api:1.0-SNAPSHOT"
 }
 
 publishing {
