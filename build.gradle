@@ -13,16 +13,29 @@ java {
     withJavadocJar()
 }
 
+def props = new Properties()
+if (file(".env").exists())
+    file(".env").withInputStream { props.load(it) }
+
+
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/Orezia/OreziaCore-API")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR") ?: props.getProperty("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN") ?: props.getProperty("GITHUB_TOKEN")
+        }
+    }
     maven {
         url = 'https://papermc.io/repo/repository/maven-public/'
     }
 }
 
 dependencies {
-    api "fr.orezia.mc:OreziaCore-api:1.0-SNAPSHOT"
+    api "fr.orezia.mc:oreziacore-api:1.0-SNAPSHOT"
 }
 
 publishing {
