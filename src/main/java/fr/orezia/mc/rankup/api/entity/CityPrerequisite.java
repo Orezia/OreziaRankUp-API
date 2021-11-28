@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
-import java.util.UUID;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 @SerializableAs("CityPrerequisite")
 public class CityPrerequisite extends AbstractPrerequisite {
 
-  private UUID playerId;
+  private String playerId;
 
   /**
    * Default constructor.
@@ -47,7 +46,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     final @NotNull Map<@NotNull String, @Nullable Object> serialization = super.serialize();
-    serialization.put("playerId", playerId().toString());
+    serialization.put("playerId", playerId());
     return serialization;
   }
 
@@ -58,7 +57,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(pure = true)
-  public @NotNull UUID playerId() {
+  public @NotNull String playerId() {
     return playerId;
   }
 
@@ -70,19 +69,9 @@ public class CityPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull CityPrerequisite playerId(final @NotNull UUID playerId) {
+  public @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
     this.playerId = playerId;
     return this;
   }
 
-  /**
-   * Sets the player UUID from string.
-   *
-   * @param playerId the player UUID as string.
-   * @see #playerId(UUID)
-   */
-  @Contract(mutates = "this")
-  private void playerId(final @NotNull String playerId) {
-    this.playerId = UUID.fromString(playerId);
-  }
 }
