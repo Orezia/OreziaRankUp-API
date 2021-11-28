@@ -3,8 +3,8 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
+import fr.orezia.mc.core.api.entity.IdentifiableWithTechnicalId;
 import java.util.Map;
-import java.util.UUID;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -17,9 +17,9 @@ import org.jetbrains.annotations.Nullable;
  * @see CityRankUp
  * @since 1.0
  */
-abstract class AbstractRankUp implements ConfigurationSerializable {
+abstract class AbstractRankUp implements ConfigurationSerializable, IdentifiableWithTechnicalId {
 
-  private UUID playerUUID;
+  private String id;
   private String userName;
   private String rank;
   private @Nullable String items;
@@ -36,7 +36,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable {
    * @param serialization serialization map
    */
   AbstractRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    playerUUID((String) requireNonNull(serialization.get("playerUUID")));
+    id((String) requireNonNull(serialization.get("id")));
     userName((String) requireNonNull(serialization.get("username")));
     rank((String) requireNonNull(serialization.get("rank")));
     items((String) serialization.get("items"));
@@ -49,7 +49,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable {
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
-        "playerUUID", playerUUID().toString(),
+        "id", id(),
         "username", userName(),
         "rank", rank(),
         "items", items()
@@ -57,26 +57,21 @@ abstract class AbstractRankUp implements ConfigurationSerializable {
   }
 
   /**
-   * Gets the player UUID.
-   *
-   * @return the player UUID
+   * {@inheritDoc}
    */
-  @PublicApi
+  @Override
   @Contract(pure = true)
-  public @NotNull UUID playerUUID() {
-    return playerUUID;
+  public @NotNull String id() {
+    return id;
   }
 
   /**
-   * Sets the player UUID.
-   *
-   * @param playerUUID the player UUID
-   * @return {@code this}
+   * {@inheritDoc}
    */
-  @PublicApi
+  @Override
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUp playerUUID(final @NotNull UUID playerUUID) {
-    this.playerUUID = playerUUID;
+  public @NotNull AbstractRankUp id(final @NotNull String id) {
+    this.id = id;
     return this;
   }
 
@@ -150,16 +145,5 @@ abstract class AbstractRankUp implements ConfigurationSerializable {
   public @NotNull AbstractRankUp items(final @Nullable String items) {
     this.items = items;
     return this;
-  }
-
-  /**
-   * Sets the player UUID from string.
-   *
-   * @param playerUUID the player UUID as string.
-   * @see #playerUUID(UUID)
-   */
-  @Contract(mutates = "this")
-  private void playerUUID(final @NotNull String playerUUID) {
-    this.playerUUID = UUID.fromString(playerUUID);
   }
 }

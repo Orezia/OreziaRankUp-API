@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 @SerializableAs("PlayerPrerequisite")
 public class PlayerPrerequisite extends AbstractPrerequisite {
 
-  private UUID playerUUID;
+  private UUID playerId;
 
   /**
    * Default constructor.
@@ -37,7 +37,7 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
   @PublicApi
   public PlayerPrerequisite(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     super(serialization);
-    playerUUID((String) requireNonNull(serialization.get("playerUUID")));
+    playerId((String) requireNonNull(serialization.get("playerId")));
   }
 
   /**
@@ -47,7 +47,7 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     final @NotNull Map<@NotNull String, @Nullable Object> serialization = super.serialize();
-    serialization.put("playerUUID", playerUUID().toString());
+    serialization.put("playerId", playerId().toString());
     return serialization;
   }
 
@@ -58,31 +58,31 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(pure = true)
-  public @NotNull UUID playerUUID() {
-    return playerUUID;
+  public @NotNull UUID playerId() {
+    return playerId;
   }
 
   /**
    * Sets the player UUID.
    *
-   * @param playerUUID the new player UUID
+   * @param playerId the new player UUID
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull PlayerPrerequisite playerUUID(final @NotNull UUID playerUUID) {
-    this.playerUUID = playerUUID;
+  public @NotNull PlayerPrerequisite playerId(final @NotNull UUID playerId) {
+    this.playerId = playerId;
     return this;
   }
 
   /**
    * Sets the player UUID from string.
    *
-   * @param playerUUID the player UUID as string.
-   * @see #playerUUID(UUID)
+   * @param playerId the player UUID as string.
+   * @see #playerId(UUID)
    */
   @Contract(mutates = "this")
-  private void playerUUID(final @NotNull String playerUUID) {
-    this.playerUUID = UUID.fromString(playerUUID);
+  private void playerId(final @NotNull String playerId) {
+    this.playerId = UUID.fromString(playerId);
   }
 }
