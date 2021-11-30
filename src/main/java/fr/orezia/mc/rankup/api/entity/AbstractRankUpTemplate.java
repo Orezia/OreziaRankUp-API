@@ -22,7 +22,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
     ConfigurationSerializable {
 
   private Integer id;
-  private @Nullable String previousRankUpId;
+  private @Nullable Integer previousRankUpId;
   private @Nullable String items;
   private @Nullable String actions;
 
@@ -38,8 +38,8 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    * @param serialization serialization map
    */
   AbstractRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    id((String) requireNonNull(serialization.get("id")));
-    previousRankUpId((String) serialization.get("previousRankUpId"));
+    id((Integer) requireNonNull(serialization.get("id")));
+    previousRankUpId((Integer) serialization.get("previousRankUpId"));
     items((String) serialization.get("items"));
     actions((String) serialization.get("actions"));
   }
@@ -84,7 +84,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String previousRankUpId() {
+  public @Nullable Integer previousRankUpId() {
     return previousRankUpId;
   }
 
@@ -97,7 +97,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull AbstractRankUpTemplate previousRankUpId(
-      final @Nullable String previousRankUpId) {
+      final @Nullable Integer previousRankUpId) {
     this.previousRankUpId = previousRankUpId;
     return this;
   }
@@ -148,17 +148,6 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
   public @This @NotNull AbstractRankUpTemplate actions(final @Nullable String actions) {
     this.actions = actions;
     return this;
-  }
-
-
-  /**
-   * Sets id from {@link String}.
-   *
-   * @param newId the new id
-   */
-  @Contract(mutates = "this")
-  private void id(final @NotNull String newId) {
-    id = Integer.parseInt(newId);
   }
 
 }
