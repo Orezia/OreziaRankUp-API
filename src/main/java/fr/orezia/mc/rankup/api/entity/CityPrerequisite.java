@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -69,7 +70,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
+  public @This @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
     this.playerId = playerId;
     return this;
   }
