@@ -3,9 +3,10 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.core.api.entity.IdentifiableWithTechnicalId;
+import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
  * @see CityPrerequisite
  * @since 1.0
  */
-abstract class AbstractPrerequisite implements IdentifiableWithTechnicalId,
+abstract class AbstractPrerequisite implements Entity<@NotNull String>,
     ConfigurationSerializable {
 
   private String id;
@@ -71,7 +72,7 @@ abstract class AbstractPrerequisite implements IdentifiableWithTechnicalId,
    */
   @Override
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractPrerequisite id(final @NotNull String id) {
+  public @This @NotNull AbstractPrerequisite id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -95,7 +96,7 @@ abstract class AbstractPrerequisite implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractPrerequisite query(final @NotNull String query) {
+  public @This @NotNull AbstractPrerequisite query(final @NotNull String query) {
     this.query = query;
     return this;
   }
@@ -119,7 +120,7 @@ abstract class AbstractPrerequisite implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractPrerequisite action(final @Nullable String action) {
+  public @This @NotNull AbstractPrerequisite action(final @Nullable String action) {
     this.action = action;
     return this;
   }

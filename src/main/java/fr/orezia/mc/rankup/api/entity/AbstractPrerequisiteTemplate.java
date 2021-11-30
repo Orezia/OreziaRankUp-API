@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -65,7 +66,7 @@ abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull String rankUpId) {
+  public @This @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull String rankUpId) {
     this.rankUpId = rankUpId;
     return this;
   }
