@@ -3,9 +3,10 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.core.api.entity.IdentifiableWithTechnicalId;
+import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
  * @see CityRankUp
  * @since 1.0
  */
-abstract class AbstractRankUp implements ConfigurationSerializable, IdentifiableWithTechnicalId {
+abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotNull String> {
 
   private String id;
   private String userName;
@@ -70,7 +71,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Identifiable
    */
   @Override
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUp id(final @NotNull String id) {
+  public @This @NotNull AbstractRankUp id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -94,7 +95,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Identifiable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUp userName(final String userName) {
+  public @This @NotNull AbstractRankUp userName(final String userName) {
     this.userName = userName;
     return this;
   }
@@ -118,7 +119,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Identifiable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUp rank(final @NotNull String rank) {
+  public @This @NotNull AbstractRankUp rank(final @NotNull String rank) {
     this.rank = rank;
     return this;
   }
@@ -142,7 +143,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Identifiable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUp items(final @Nullable String items) {
+  public @This @NotNull AbstractRankUp items(final @Nullable String items) {
     this.items = items;
     return this;
   }

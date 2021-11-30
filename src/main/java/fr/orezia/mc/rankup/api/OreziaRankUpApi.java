@@ -2,10 +2,10 @@ package fr.orezia.mc.rankup.api;
 
 import fr.orezia.mc.core.api.OreziaPluginApi;
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.rankup.api.data.services.CityRankUpDataService;
-import fr.orezia.mc.rankup.api.data.services.CityRankUpTemplateDataService;
-import fr.orezia.mc.rankup.api.data.services.PlayerRankUpDataService;
-import fr.orezia.mc.rankup.api.data.services.PlayerRankUpTemplateDataService;
+import fr.orezia.mc.rankup.api.data.service.CityRankUpDataService;
+import fr.orezia.mc.rankup.api.data.service.CityRankUpTemplateDataService;
+import fr.orezia.mc.rankup.api.data.service.PlayerRankUpDataService;
+import fr.orezia.mc.rankup.api.data.service.PlayerRankUpTemplateDataService;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -1,4 +1,4 @@
-package fr.orezia.mc.rankup.api.data.services;
+package fr.orezia.mc.rankup.api.data.service;
 
 
 import fr.orezia.mc.core.api.annotation.PublicApi;

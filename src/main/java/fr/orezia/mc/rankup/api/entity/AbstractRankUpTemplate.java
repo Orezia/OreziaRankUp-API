@@ -3,9 +3,10 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.core.api.entity.IdentifiableWithTechnicalId;
+import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,13 +18,11 @@ import org.jetbrains.annotations.Nullable;
  * @see PlayerRankUpTemplate
  * @since 1.0
  */
-abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
+abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
     ConfigurationSerializable {
 
-  private String id;
-  private String masculineName;
-  private @Nullable String feminineName;
-  private @Nullable String previousRankUpId;
+  private Integer id;
+  private @Nullable Integer previousRankUpId;
   private @Nullable String items;
   private @Nullable String actions;
 
@@ -39,10 +38,8 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    * @param serialization serialization map
    */
   AbstractRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    id((String) requireNonNull(serialization.get("id")));
-    masculineName((String) requireNonNull(serialization.get("masculineName")));
-    feminineName((String) serialization.get("feminineName"));
-    previousRankUpId((String) serialization.get("previousRankUpId"));
+    id((Integer) requireNonNull(serialization.get("id")));
+    previousRankUpId((Integer) serialization.get("previousRankUpId"));
     items((String) serialization.get("items"));
     actions((String) serialization.get("actions"));
   }
@@ -55,8 +52,6 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
         "id", id(),
-        "masculineName", masculineName(),
-        "feminineName", feminineName(),
         "previousRankUpId", previousRankUpId(),
         "items", items(),
         "actions", actions()
@@ -68,7 +63,7 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @Override
   @Contract(pure = true)
-  public @NotNull String id() {
+  public @NotNull Integer id() {
     return id;
   }
 
@@ -77,56 +72,8 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @Override
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate id(final @NotNull String newId) {
+  public @This @NotNull AbstractRankUpTemplate id(final @NotNull Integer newId) {
     id = newId;
-    return this;
-  }
-
-  /**
-   * Gets the masculine name.
-   *
-   * @return the masculine name
-   */
-  @PublicApi
-  @Contract(pure = true)
-  public @NotNull String masculineName() {
-    return masculineName;
-  }
-
-  /**
-   * Sets the masculine name.
-   *
-   * @param masculineName the new masculine name
-   * @return {@code this}
-   */
-  @PublicApi
-  @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate masculineName(final @NotNull String masculineName) {
-    this.masculineName = masculineName;
-    return this;
-  }
-
-  /**
-   * Gets the feminine name.
-   *
-   * @return the feminine name
-   */
-  @PublicApi
-  @Contract(pure = true)
-  public @Nullable String feminineName() {
-    return feminineName;
-  }
-
-  /**
-   * Sets the feminine name.
-   *
-   * @param feminineName the new feminine name
-   * @return {@code this}
-   */
-  @PublicApi
-  @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate feminineName(final @Nullable String feminineName) {
-    this.feminineName = feminineName;
     return this;
   }
 
@@ -137,7 +84,7 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String previousRankUpId() {
+  public @Nullable Integer previousRankUpId() {
     return previousRankUpId;
   }
 
@@ -149,7 +96,8 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate previousRankUpId(final @Nullable String previousRankUpId) {
+  public @This @NotNull AbstractRankUpTemplate previousRankUpId(
+      final @Nullable Integer previousRankUpId) {
     this.previousRankUpId = previousRankUpId;
     return this;
   }
@@ -173,7 +121,7 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate items(final @Nullable String items) {
+  public @This @NotNull AbstractRankUpTemplate items(final @Nullable String items) {
     this.items = items;
     return this;
   }
@@ -197,8 +145,9 @@ abstract class AbstractRankUpTemplate implements IdentifiableWithTechnicalId,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @NotNull AbstractRankUpTemplate actions(final @Nullable String actions) {
+  public @This @NotNull AbstractRankUpTemplate actions(final @Nullable String actions) {
     this.actions = actions;
     return this;
   }
+
 }
