@@ -5,7 +5,6 @@ import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisite;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUp;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -31,13 +30,15 @@ public interface PlayerRankUpDataService {
   boolean create(final @NotNull PlayerRankUp playerRankUp);
 
   /**
-   * Gets all {@link PlayerRankUp player rank-up}.
+   * Checks if a {@link PlayerRankUp player rank-up} exists with the given id.
    *
-   * @return {@link Queue} of all {@link PlayerRankUp player rank-up}
+   * @param id the id of {@link PlayerRankUp player rank-up}
+   * @return {@code true} if a {@link PlayerRankUp player rank-up} has been found, {@code false}
+   * otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Queue<@NotNull PlayerRankUp> getAll();
+  boolean exist(final @NotNull String id);
 
   /**
    * Gets a {@link PlayerRankUp player rank-up} from its id.
@@ -98,6 +99,27 @@ public interface PlayerRankUpDataService {
       final @NotNull PlayerRankUp playerRankUp);
 
   /**
+   * Checks if a {@link PlayerPrerequisite player prerequisite} exists with the given id.
+   *
+   * @param id the id of {@link PlayerPrerequisite player prerequisite}
+   * @return {@code true} if a {@link PlayerPrerequisite player prerequisite} has been found, {@code
+   * false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean existPrerequisite(final @NotNull String id);
+
+  /**
+   * Gets a {@link PlayerPrerequisite player prerequisite} from its id.
+   *
+   * @param id the id of {@link PlayerPrerequisite player prerequisite}
+   * @return the found {@link PlayerPrerequisite player prerequisite}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull Optional<PlayerPrerequisite> getPrerequisite(final @NotNull String id);
+
+  /**
    * Updates the {@link PlayerPrerequisite player prerequisite}.
    *
    * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite}
@@ -116,5 +138,7 @@ public interface PlayerRankUpDataService {
   @PublicApi
   @Contract
   boolean removePrerequisite(final @NotNull String id);
+
   // endregion
+
 }

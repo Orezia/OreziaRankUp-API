@@ -4,6 +4,7 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
+import java.util.List;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.checkerframework.common.returnsreceiver.qual.This;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @PublicApi
 @SerializableAs("PlayerRankUp")
-public class PlayerRankUp extends AbstractRankUp {
+public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
 
   private Gender gender;
 
@@ -38,7 +39,7 @@ public class PlayerRankUp extends AbstractRankUp {
   @PublicApi
   public PlayerRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     super(serialization);
-    gender((String) requireNonNull(serialization.get("gender")));
+    gender = Gender.valueOf((String) requireNonNull(serialization.get("gender")));
   }
 
   /**
@@ -49,6 +50,111 @@ public class PlayerRankUp extends AbstractRankUp {
     final Map<@NotNull String, @Nullable Object> serialization = super.serialize();
     serialization.put("gender", gender().name());
     return serialization;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull String id() {
+    return id;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp id(final @NotNull String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public String userName() {
+    return userName;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp userName(final String userName) {
+    this.userName = userName;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull Integer rank() {
+    return rank;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp rank(final @NotNull Integer rank) {
+    this.rank = rank;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull Integer nextRank() {
+    return nextRank;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp nextRank(final @NotNull Integer nextRank) {
+    this.nextRank = nextRank;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String items() {
+    return items;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp items(final @Nullable String items) {
+    this.items = items;
+    return this;
   }
 
   /**
@@ -69,17 +175,32 @@ public class PlayerRankUp extends AbstractRankUp {
    * @return {@code this}
    */
   @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull PlayerRankUp gender(final @NotNull Gender gender) {
     this.gender = gender;
     return this;
   }
 
   /**
-   * Sets the gender from {@link String}.
-   *
-   * @param gender the gender
+   * {@inheritDoc}
    */
-  private void gender(final @NotNull String gender) {
-    gender(Gender.valueOf(gender));
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable List<@NotNull PlayerPrerequisite> prerequisites() {
+    return prerequisites;
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUp prerequisites(
+      final @Nullable List<@NotNull PlayerPrerequisite> prerequisites) {
+    this.prerequisites = prerequisites;
+    return this;
+  }
+
 }

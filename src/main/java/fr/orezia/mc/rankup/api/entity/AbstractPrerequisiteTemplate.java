@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
  */
 abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
 
-  private String rankUpId;
+  String rankUpId;
 
   /**
    * Default constructor.
@@ -33,7 +33,7 @@ abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
    */
   AbstractPrerequisiteTemplate(
       final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    rankUpId((String) requireNonNull(serialization.get("rankUpId")));
+    rankUpId = (String) requireNonNull(serialization.get("rankUpId"));
   }
 
   /**
@@ -43,7 +43,7 @@ abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     final Map<@NotNull String, @Nullable Object> serialization = super.serialize();
-    serialization.put("rankUpId", rankUpId());
+    serialization.put("rankUpId", rankUpId);
     return serialization;
   }
 
@@ -54,9 +54,7 @@ abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String rankUpId() {
-    return rankUpId;
-  }
+  public abstract @Nullable String rankUpId();
 
   /**
    * Sets the rank-up ID.
@@ -66,8 +64,7 @@ abstract class AbstractPrerequisiteTemplate extends AbstractPrerequisite {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull String rankUpId) {
-    this.rankUpId = rankUpId;
-    return this;
-  }
+  public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(
+      final @NotNull String rankUpId);
+
 }

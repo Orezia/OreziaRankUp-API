@@ -11,8 +11,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Data service for {@link CityRankUpTemplate city rank-up
- * template}.
+ * Data service for {@link CityRankUpTemplate city rank-up template}.
  *
  * @since 1.0
  */
@@ -41,6 +40,17 @@ public interface CityRankUpTemplateDataService {
   @NotNull Queue<@NotNull CityRankUpTemplate> getAll();
 
   /**
+   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given id.
+   *
+   * @param id the id of {@link CityRankUpTemplate city rank-up template}
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean exist(final @NotNull Integer id);
+
+  /**
    * Gets a {@link CityRankUpTemplate city rank-up template} from its id.
    *
    * @param id the id of {@link CityRankUpTemplate city rank-up template}
@@ -48,7 +58,16 @@ public interface CityRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<CityRankUpTemplate> get(final @NotNull String id);
+  @NotNull Optional<CityRankUpTemplate> get(final @NotNull Integer id);
+
+  /**
+   * Gets the very first {@link CityRankUpTemplate city rank-up template}.
+   *
+   * @return the very first {@link CityRankUpTemplate city rank-up template}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull CityRankUpTemplate getFirst();
 
   /**
    * Updates the {@link CityRankUpTemplate city rank-up template}.
@@ -68,7 +87,7 @@ public interface CityRankUpTemplateDataService {
    */
   @PublicApi
   @Contract
-  boolean delete(final @NotNull String id);
+  boolean delete(final @NotNull Integer id);
 
   // endregion
 
@@ -101,6 +120,27 @@ public interface CityRankUpTemplateDataService {
       final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
+   * Checks if a {@link CityPrerequisiteTemplate city prerequisite template} exists with the given
+   * id.
+   *
+   * @param id the id of {@link CityPrerequisiteTemplate city prerequisite template}
+   * @return {@code true} if a {@link CityPrerequisiteTemplate city prerequisite template} has been
+   * found, {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean existPrerequisite(final @NotNull String id);
+
+  /**
+   * Gets a {@link CityPrerequisiteTemplate city prerequisite template} from its id.
+   *
+   * @param id the id of {@link CityPrerequisiteTemplate city prerequisite template}
+   * @return the found {@link CityPrerequisiteTemplate city prerequisite template}
+   */
+  @PublicApi
+  @NotNull Optional<CityPrerequisiteTemplate> getPrerequisite(final @NotNull String id);
+
+  /**
    * Updates the {@link CityPrerequisiteTemplate city prerequisite template}.
    *
    * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite
@@ -122,6 +162,7 @@ public interface CityRankUpTemplateDataService {
   @PublicApi
   @Contract
   boolean removePrerequisiteTemplate(final @NotNull String id);
+
   // endregion
 
 }

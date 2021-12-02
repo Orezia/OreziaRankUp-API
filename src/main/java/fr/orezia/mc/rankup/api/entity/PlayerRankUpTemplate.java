@@ -3,6 +3,7 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
+import java.util.List;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.checkerframework.common.returnsreceiver.qual.This;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @PublicApi
 @SerializableAs("PlayerRankUpTemplate")
-public class PlayerRankUpTemplate extends AbstractRankUpTemplate {
+public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequisiteTemplate> {
 
   private String masculineName;
   private @Nullable String feminineName;
@@ -54,6 +55,93 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate {
   }
 
   /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull Integer id() {
+    return id;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUpTemplate id(final @NotNull Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable Integer nextId() {
+    return nextId;
+  }
+
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUpTemplate nextId(final @Nullable Integer nextId) {
+    this.nextId = nextId;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String items() {
+    return items;
+  }
+
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUpTemplate items(final @Nullable String items) {
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String actions() {
+    return actions;
+  }
+
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUpTemplate actions(final @Nullable String actions) {
+    this.actions = actions;
+    return this;
+  }
+
+  /**
    * Gets the masculine name.
    *
    * @return the masculine name
@@ -72,7 +160,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate masculineName(final @NotNull String masculineName) {
+  public @This @NotNull PlayerRankUpTemplate masculineName(final @NotNull String masculineName) {
     this.masculineName = masculineName;
     return this;
   }
@@ -96,8 +184,30 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate feminineName(final @Nullable String feminineName) {
+  public @This @NotNull PlayerRankUpTemplate feminineName(final @Nullable String feminineName) {
     this.feminineName = feminineName;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable List<@NotNull PlayerPrerequisiteTemplate> prerequisites() {
+    return prerequisites;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerRankUpTemplate prerequisites(
+      final @Nullable List<@NotNull PlayerPrerequisiteTemplate> prerequisites) {
+    this.prerequisites = prerequisites;
     return this;
   }
 
