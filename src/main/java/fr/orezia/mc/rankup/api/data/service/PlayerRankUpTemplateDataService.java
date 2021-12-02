@@ -39,6 +39,17 @@ public interface PlayerRankUpTemplateDataService {
   @NotNull Queue<@NotNull PlayerRankUpTemplate> getAll();
 
   /**
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given id.
+   *
+   * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean exist(final @NotNull Integer id);
+
+  /**
    * Gets a {@link PlayerRankUpTemplate player rank-up template} from its id.
    *
    * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
@@ -46,7 +57,16 @@ public interface PlayerRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<PlayerRankUpTemplate> get(final @NotNull String id);
+  @NotNull Optional<PlayerRankUpTemplate> get(final @NotNull Integer id);
+
+  /**
+   * Gets the very first {@link PlayerRankUpTemplate player rank-up template}.
+   *
+   * @return the very first {@link PlayerRankUpTemplate player rank-up template}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull PlayerRankUpTemplate getFirst();
 
   /**
    * Updates the {@link PlayerRankUpTemplate player rank-up template}.
@@ -66,7 +86,7 @@ public interface PlayerRankUpTemplateDataService {
    */
   @PublicApi
   @Contract
-  boolean delete(final @NotNull String id);
+  boolean delete(final @NotNull Integer id);
 
   // endregion
 
@@ -100,6 +120,27 @@ public interface PlayerRankUpTemplateDataService {
       final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
+   * Checks if a {@link PlayerPrerequisiteTemplate player prerequisite template} exists with the
+   * given id.
+   *
+   * @param id the id of {@link PlayerPrerequisiteTemplate player prerequisite template}
+   * @return {@code true} if a {@link PlayerPrerequisiteTemplate player prerequisite template} has
+   * been found, {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean existPrerequisite(final @NotNull String id);
+
+  /**
+   * Gets a {@link PlayerPrerequisiteTemplate player prerequisite template} from its id.
+   *
+   * @param id the id of {@link PlayerPrerequisiteTemplate player prerequisite template}
+   * @return the found {@link PlayerPrerequisiteTemplate player prerequisite template}
+   */
+  @PublicApi
+  @NotNull Optional<PlayerPrerequisiteTemplate> getPrerequisite(final @NotNull String id);
+
+  /**
    * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template}.
    *
    * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
@@ -121,6 +162,7 @@ public interface PlayerRankUpTemplateDataService {
   @PublicApi
   @Contract
   boolean removePrerequisiteTemplate(final @NotNull String id);
+
   // endregion
 
 }

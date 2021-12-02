@@ -1,9 +1,12 @@
 package fr.orezia.mc.rankup.api.entity;
 
+import static fr.orezia.mc.core.api.entity.Cascade.CascadeType.ALL;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
+import fr.orezia.mc.core.api.entity.Cascade;
 import fr.orezia.mc.core.api.entity.Entity;
+import java.util.List;
 import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.checkerframework.common.returnsreceiver.qual.This;
@@ -14,16 +17,22 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Abstract entity class for rank-up.
  *
+ * @param <P> the type of {@link AbstractPrerequisite prerequisites}
  * @see PlayerRankUp
  * @see CityRankUp
  * @since 1.0
  */
-abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotNull String> {
+abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<@NotNull String>,
+    ConfigurationSerializable {
 
-  private String id;
-  private String userName;
-  private String rank;
-  private @Nullable String items;
+  String id;
+  String userName;
+  Integer rank;
+  Integer nextRank;
+  String items;
+
+  @Cascade(ALL)
+  List<P> prerequisites;
 
   /**
    * Default constructor.
@@ -37,10 +46,12 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    * @param serialization serialization map
    */
   AbstractRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    id((String) requireNonNull(serialization.get("id")));
-    userName((String) requireNonNull(serialization.get("username")));
-    rank((String) requireNonNull(serialization.get("rank")));
-    items((String) serialization.get("items"));
+    id = (String) requireNonNull(serialization.get("id"));
+    userName = (String) requireNonNull(serialization.get("username"));
+    rank = (Integer) requireNonNull(serialization.get("rank"));
+    nextRank = (Integer) requireNonNull(serialization.get("nextRank"));
+    items = (String) serialization.get("items");
+    prerequisites = (List) requireNonNull(serialization.get("prerequisites"));
   }
 
   /**
@@ -50,30 +61,13 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
-        "id", id(),
-        "username", userName(),
-        "rank", rank(),
-        "items", items()
+        "id", id,
+        "username", userName,
+        "rank", rank,
+        "nextRank", nextRank,
+        "items", items,
+        "prerequisites", prerequisites
     );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(pure = true)
-  public @NotNull String id() {
-    return id;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUp id(final @NotNull String id) {
-    this.id = id;
-    return this;
   }
 
   /**
@@ -83,9 +77,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    */
   @PublicApi
   @Contract(pure = true)
-  public String userName() {
-    return userName;
-  }
+  public abstract String userName();
 
   /**
    * Sets the player's username.
@@ -95,21 +87,16 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUp userName(final String userName) {
-    this.userName = userName;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUp userName(final String userName);
 
   /**
    * Gets the rank.
    *
-   * @return the rank.
+   * @return the rank
    */
   @PublicApi
   @Contract(pure = true)
-  public @NotNull String rank() {
-    return rank;
-  }
+  public abstract @NotNull Integer rank();
 
   /**
    * Sets the rank.
@@ -119,10 +106,26 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUp rank(final @NotNull String rank) {
-    this.rank = rank;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUp rank(final @NotNull Integer rank);
+
+  /**
+   * Gets the next rank.
+   *
+   * @return the next rank
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @NotNull Integer nextRank();
+
+  /**
+   * Sets the next rank.
+   *
+   * @param nextRank the new next rank.
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractRankUp nextRank(final @NotNull Integer nextRank);
 
   /**
    * Gets items as JSON.
@@ -131,9 +134,7 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String items() {
-    return items;
-  }
+  public abstract @Nullable String items();
 
   /**
    * Sets items as JSON.
@@ -143,8 +144,26 @@ abstract class AbstractRankUp implements ConfigurationSerializable, Entity<@NotN
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUp items(final @Nullable String items) {
-    this.items = items;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUp items(final @Nullable String items);
+
+  /**
+   * Gets the {@link P prerequisites}.
+   *
+   * @return the {@link P prerequisites}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable List<@NotNull P> prerequisites();
+
+  /**
+   * Sets the {@link P prerequisites}.
+   *
+   * @param prerequisites the {@link P prerequisites} to set
+   * @return the current instance
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractRankUp prerequisites(
+      final @Nullable List<@NotNull P> prerequisites);
+
 }

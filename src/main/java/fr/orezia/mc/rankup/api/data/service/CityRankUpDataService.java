@@ -6,6 +6,7 @@ import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.Set;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,15 +26,19 @@ public interface CityRankUpDataService {
    * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean create(final @NotNull CityRankUp cityRankUp);
 
   /**
-   * Gets all {@link CityRankUp city rank-up}.
+   * Checks if a {@link CityRankUp city rank-up} exists with the given id.
    *
-   * @return {@link Queue} of all {@link CityRankUp city rank-up}
+   * @param id the id of {@link CityRankUp city rank-up}
+   * @return {@code true} if a {@link CityRankUp city rank-up} has been found, {@code false}
+   * otherwise
    */
   @PublicApi
-  @NotNull Queue<@NotNull CityRankUp> getAll();
+  @Contract(pure = true)
+  boolean exist(final @NotNull String id);
 
   /**
    * Gets a {@link CityRankUp city rank-up} from its id.
@@ -42,6 +47,7 @@ public interface CityRankUpDataService {
    * @return the found {@link CityRankUp city rank-up}
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull Optional<CityRankUp> get(final @NotNull String id);
 
   /**
@@ -51,6 +57,7 @@ public interface CityRankUpDataService {
    * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean update(final @NotNull CityRankUp cityRankUp);
 
   /**
@@ -60,7 +67,9 @@ public interface CityRankUpDataService {
    * @return {@code true} if delete is success, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean delete(final @NotNull String id);
+
   // endregion
 
   // region CityPrerequisite services
@@ -73,6 +82,7 @@ public interface CityRankUpDataService {
    * @return {@code true} if prerequisite is added, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean addPrerequisite(final @NotNull CityRankUp cityRankUp,
       final @NotNull CityPrerequisite cityPrerequisite);
 
@@ -83,7 +93,29 @@ public interface CityRankUpDataService {
    * @return {@link Set} of all {@link CityPrerequisite city prerequisite}
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull Set<@NotNull CityPrerequisite> getAllPrerequisite(final @NotNull CityRankUp cityRankUp);
+
+  /**
+   * Checks if a {@link CityPrerequisite city prerequisite} exists with the given id.
+   *
+   * @param id the id of {@link CityPrerequisite city prerequisite}
+   * @return {@code true} if a {@link CityPrerequisite city prerequisite} has been found, {@code
+   * false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean existPrerequisite(final @NotNull String id);
+
+  /**
+   * Gets a {@link CityPrerequisite city prerequisite} from its id.
+   *
+   * @param id the id of {@link CityPrerequisite city prerequisite}
+   * @return the found {@link CityPrerequisite city prerequisite}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull Optional<CityPrerequisite> getPrerequisite(final @NotNull String id);
 
   /**
    * Updates the {@link CityPrerequisite city prerequisite}.
@@ -92,6 +124,7 @@ public interface CityRankUpDataService {
    * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean updatePrerequisite(final @NotNull CityPrerequisite cityPrerequisite);
 
   /**
@@ -101,6 +134,9 @@ public interface CityRankUpDataService {
    * @return {@code true} if remove is success, {@code false} otherwise
    */
   @PublicApi
+  @Contract
   boolean removePrerequisite(final @NotNull String id);
+
   // endregion
+
 }

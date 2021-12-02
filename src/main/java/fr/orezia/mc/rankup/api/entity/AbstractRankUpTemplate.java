@@ -1,9 +1,12 @@
 package fr.orezia.mc.rankup.api.entity;
 
+import static fr.orezia.mc.core.api.entity.Cascade.CascadeType.ALL;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
+import fr.orezia.mc.core.api.entity.Cascade;
 import fr.orezia.mc.core.api.entity.Entity;
+import java.util.List;
 import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.checkerframework.common.returnsreceiver.qual.This;
@@ -14,17 +17,21 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Abstract entity class for rank-up template.
  *
+ * @param <P> the type of {@link AbstractPrerequisiteTemplate prerequisites}
  * @see CityRankUpTemplate
  * @see PlayerRankUpTemplate
  * @since 1.0
  */
-abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
-    ConfigurationSerializable {
+abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
+    implements Entity<@NotNull Integer>, ConfigurationSerializable {
 
-  private Integer id;
-  private @Nullable Integer previousRankUpId;
-  private @Nullable String items;
-  private @Nullable String actions;
+  Integer id;
+  Integer nextId;
+  String items;
+  String actions;
+
+  @Cascade(ALL)
+  List<P> prerequisites;
 
   /**
    * Default constructor.
@@ -38,10 +45,11 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    * @param serialization serialization map
    */
   AbstractRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    id((Integer) requireNonNull(serialization.get("id")));
-    previousRankUpId((Integer) serialization.get("previousRankUpId"));
-    items((String) serialization.get("items"));
-    actions((String) serialization.get("actions"));
+    id = (Integer) requireNonNull(serialization.get("id"));
+    nextId = (Integer) serialization.get("nextId");
+    items = (String) serialization.get("items");
+    actions = (String) serialization.get("actions");
+    prerequisites = (List) requireNonNull(serialization.get("prerequisites"));
   }
 
   /**
@@ -51,30 +59,12 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
-        "id", id(),
-        "previousRankUpId", previousRankUpId(),
-        "items", items(),
-        "actions", actions()
+        "id", id,
+        "nextId", nextId,
+        "items", items,
+        "actions", actions,
+        "prerequisites", prerequisites
     );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(pure = true)
-  public @NotNull Integer id() {
-    return id;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate id(final @NotNull Integer newId) {
-    id = newId;
-    return this;
   }
 
   /**
@@ -84,23 +74,18 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable Integer previousRankUpId() {
-    return previousRankUpId;
-  }
+  public abstract @Nullable Integer nextId();
 
   /**
-   * Sets the previous rank-up ID.
+   * Sets the next rank-up ID.
    *
-   * @param previousRankUpId the new previous rank-up ID
+   * @param nextId the new next rank-up ID
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate previousRankUpId(
-      final @Nullable Integer previousRankUpId) {
-    this.previousRankUpId = previousRankUpId;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUpTemplate nextId(
+      final @Nullable Integer nextId);
 
   /**
    * Gets items as JSON.
@@ -109,9 +94,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String items() {
-    return items;
-  }
+  public abstract @Nullable String items();
 
   /**
    * Sets items as JSON.
@@ -121,10 +104,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate items(final @Nullable String items) {
-    this.items = items;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUpTemplate items(final @Nullable String items);
 
   /**
    * Gets rank-up' actions.
@@ -133,9 +113,7 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String actions() {
-    return actions;
-  }
+  public abstract @Nullable String actions();
 
   /**
    * Sets rank-up' actions.
@@ -145,9 +123,26 @@ abstract class AbstractRankUpTemplate implements Entity<@NotNull Integer>,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractRankUpTemplate actions(final @Nullable String actions) {
-    this.actions = actions;
-    return this;
-  }
+  public abstract @This @NotNull AbstractRankUpTemplate actions(final @Nullable String actions);
+
+  /**
+   * Gets the {@link P prerequisites}.
+   *
+   * @return the {@link P prerequisites}
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable List<@NotNull P> prerequisites();
+
+  /**
+   * Sets the {@link P prerequisites}.
+   *
+   * @param prerequisites the {@link P prerequisites} to set
+   * @return the current instance
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractRankUpTemplate prerequisites(
+      final @Nullable List<@NotNull P> prerequisites);
 
 }

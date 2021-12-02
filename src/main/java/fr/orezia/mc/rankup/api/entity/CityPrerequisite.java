@@ -44,11 +44,75 @@ public class CityPrerequisite extends AbstractPrerequisite {
    * {@inheritDoc}
    */
   @Override
+  @PublicApi
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     final @NotNull Map<@NotNull String, @Nullable Object> serialization = super.serialize();
     serialization.put("playerId", playerId());
     return serialization;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull String id() {
+    return id;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull CityPrerequisite id(final @NotNull String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @NotNull String query() {
+    return query;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull CityPrerequisite query(final @NotNull String query) {
+    this.query = query;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String action() {
+    return action;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull CityPrerequisite action(final @Nullable String action) {
+    this.action = action;
+    return this;
   }
 
   /**
