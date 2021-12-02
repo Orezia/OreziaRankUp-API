@@ -23,9 +23,9 @@ import org.jetbrains.annotations.Nullable;
 abstract class AbstractPrerequisite implements Entity<@NotNull String>,
     ConfigurationSerializable {
 
-  private String id;
-  private String query;
-  private @Nullable String action;
+  String id;
+  String query;
+  String action;
 
   /**
    * Default constructor.
@@ -40,9 +40,9 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
    */
   AbstractPrerequisite(
       final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
-    id((String) requireNonNull(serialization.get("id")));
-    query((String) requireNonNull(serialization.get("query")));
-    action((String) serialization.get("action"));
+    id = (String) requireNonNull(serialization.get("id"));
+    query = (String) requireNonNull(serialization.get("query"));
+    action = (String) serialization.get("action");
   }
 
   /**
@@ -52,29 +52,10 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
   @Contract(value = " -> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
-        "id", id(),
-        "query", query(),
-        "action", action()
+        "id", id,
+        "query", query,
+        "action", action
     );
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(pure = true)
-  public @NotNull String id() {
-    return id;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractPrerequisite id(final @NotNull String id) {
-    this.id = id;
-    return this;
   }
 
   /**
@@ -84,9 +65,7 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @NotNull String query() {
-    return query;
-  }
+  public abstract @NotNull String query();
 
   /**
    * Sets the query.
@@ -96,10 +75,7 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractPrerequisite query(final @NotNull String query) {
-    this.query = query;
-    return this;
-  }
+  public abstract @This @NotNull AbstractPrerequisite query(final @NotNull String query);
 
   /**
    * Gets the action.
@@ -108,9 +84,7 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String action() {
-    return action;
-  }
+  public abstract @Nullable String action();
 
   /**
    * Sets the action.
@@ -120,8 +94,6 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull AbstractPrerequisite action(final @Nullable String action) {
-    this.action = action;
-    return this;
-  }
+  public abstract @This @NotNull AbstractPrerequisite action(final @Nullable String action);
+
 }
