@@ -5,7 +5,6 @@ import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisite;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUp;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
