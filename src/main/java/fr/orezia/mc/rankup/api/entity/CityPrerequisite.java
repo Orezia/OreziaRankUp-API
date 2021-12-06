@@ -20,8 +20,6 @@ import org.jetbrains.annotations.Nullable;
 @SerializableAs("CityPrerequisite")
 public class CityPrerequisite extends AbstractPrerequisite {
 
-  private String playerId;
-
   /**
    * Default constructor.
    */
@@ -79,6 +77,27 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Override
   @PublicApi
   @Contract(pure = true)
+  public @NotNull String playerId() {
+    return playerId;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
+    this.playerId = playerId;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
   public @NotNull String query() {
     return query;
   }
@@ -112,30 +131,6 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull CityPrerequisite action(final @Nullable String action) {
     this.action = action;
-    return this;
-  }
-
-  /**
-   * Gets the player UUID.
-   *
-   * @return the player UUID.
-   */
-  @PublicApi
-  @Contract(pure = true)
-  public @NotNull String playerId() {
-    return playerId;
-  }
-
-  /**
-   * Sets the player UUID.
-   *
-   * @param playerId the new player UUID
-   * @return {@code this}
-   */
-  @PublicApi
-  @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
-    this.playerId = playerId;
     return this;
   }
 
