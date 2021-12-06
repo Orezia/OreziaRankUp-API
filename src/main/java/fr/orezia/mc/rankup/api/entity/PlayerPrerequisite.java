@@ -20,8 +20,6 @@ import org.jetbrains.annotations.Nullable;
 @SerializableAs("PlayerPrerequisite")
 public class PlayerPrerequisite extends AbstractPrerequisite {
 
-  private String playerId;
-
   /**
    * Default constructor.
    */
@@ -116,10 +114,9 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
   }
 
   /**
-   * Gets the player UUID.
-   *
-   * @return the player UUID.
+   * {@inheritDoc}
    */
+  @Override
   @PublicApi
   @Contract(pure = true)
   public @NotNull String playerId() {
@@ -127,11 +124,9 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
   }
 
   /**
-   * Sets the player UUID.
-   *
-   * @param playerId the new player UUID
-   * @return {@code this}
+   * {@inheritDoc}
    */
+  @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull PlayerPrerequisite playerId(final @NotNull String playerId) {

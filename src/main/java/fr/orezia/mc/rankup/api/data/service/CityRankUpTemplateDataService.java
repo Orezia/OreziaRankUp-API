@@ -4,8 +4,8 @@ package fr.orezia.mc.rankup.api.data.service;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityPrerequisiteTemplate;
 import fr.orezia.mc.rankup.api.entity.CityRankUpTemplate;
+import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -33,11 +33,11 @@ public interface CityRankUpTemplateDataService {
   /**
    * Gets all {@link CityRankUpTemplate city rank-up template}.
    *
-   * @return {@link Queue} of all {@link CityRankUpTemplate city rank-up template}
+   * @return {@link LinkedHashSet} of all {@link CityRankUpTemplate city rank-up template}
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Queue<@NotNull CityRankUpTemplate> getAll();
+  @NotNull LinkedHashSet<@NotNull CityRankUpTemplate> getAll();
 
   /**
    * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given id.

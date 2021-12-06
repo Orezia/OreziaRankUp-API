@@ -3,8 +3,8 @@ package fr.orezia.mc.rankup.api.data.service;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisiteTemplate;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUpTemplate;
+import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Queue;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -32,11 +32,11 @@ public interface PlayerRankUpTemplateDataService {
   /**
    * Gets all {@link PlayerRankUpTemplate player rank-up template}.
    *
-   * @return {@link Queue} of all {@link PlayerRankUpTemplate player rank-up template}
+   * @return {@link LinkedHashSet} of all {@link PlayerRankUpTemplate player rank-up template}
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Queue<@NotNull PlayerRankUpTemplate> getAll();
+  @NotNull LinkedHashSet<@NotNull PlayerRankUpTemplate> getAll();
 
   /**
    * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given id.
