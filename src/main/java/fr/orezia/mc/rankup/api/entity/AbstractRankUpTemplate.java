@@ -8,6 +8,7 @@ import fr.orezia.mc.core.api.entity.Cascade;
 import fr.orezia.mc.core.api.entity.Entity;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
@@ -144,5 +145,30 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
   @Contract(value = "_ -> this", mutates = "this")
   public abstract @This @NotNull AbstractRankUpTemplate prerequisites(
       final @Nullable List<@NotNull P> prerequisites);
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (null == o || getClass() != o.getClass()) {
+      return false;
+    }
+
+    final AbstractRankUpTemplate that = (AbstractRankUpTemplate) o;
+    return Objects.equals(id, that.id);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 
 }
