@@ -50,6 +50,31 @@ public interface PlayerRankUpTemplateDataService {
   boolean exist(final @NotNull Integer id);
 
   /**
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given
+   * masculine name.
+   *
+   * @param masculineName the masculine name of {@link PlayerRankUpTemplate player rank-up
+   *                      template}
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean masculineNameExist(final @NotNull String masculineName);
+
+  /**
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine
+   * name.
+   *
+   * @param feminineName the feminine name of {@link PlayerRankUpTemplate player rank-up template}
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean feminineNameExist(final @NotNull String feminineName);
+
+  /**
    * Gets a {@link PlayerRankUpTemplate player rank-up template} from its id.
    *
    * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
