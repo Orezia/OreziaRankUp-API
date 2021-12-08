@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequisiteTemplate> {
 
   private String masculineName;
-  private @Nullable String feminineName;
+  private String feminineName;
 
   /**
    * Default constructor.
@@ -40,7 +40,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   public PlayerRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     super(serialization);
     masculineName((String) requireNonNull(serialization.get("masculineName")));
-    feminineName((String) serialization.get("feminineName"));
+    feminineName((String) requireNonNull(serialization.get("feminineName")));
   }
 
   /**
@@ -172,7 +172,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
    */
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String feminineName() {
+  public @NotNull String feminineName() {
     return feminineName;
   }
 
@@ -184,7 +184,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate feminineName(final @Nullable String feminineName) {
+  public @This @NotNull PlayerRankUpTemplate feminineName(final @NotNull String feminineName) {
     this.feminineName = feminineName;
     return this;
   }
