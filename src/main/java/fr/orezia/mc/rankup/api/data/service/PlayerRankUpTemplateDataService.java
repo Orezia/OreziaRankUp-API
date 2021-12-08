@@ -39,6 +39,15 @@ public interface PlayerRankUpTemplateDataService {
   @NotNull LinkedHashSet<@NotNull PlayerRankUpTemplate> getAll();
 
   /**
+   * Gets all {@link PlayerRankUpTemplate player rank-up template} IDs.
+   *
+   * @return {@link LinkedHashSet} of all {@link PlayerRankUpTemplate player rank-up template} IDs
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull LinkedHashSet<@NotNull Integer> getAllIds();
+
+  /**
    * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given id.
    *
    * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
