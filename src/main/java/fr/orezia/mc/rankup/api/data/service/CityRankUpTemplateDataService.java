@@ -51,6 +51,17 @@ public interface CityRankUpTemplateDataService {
   boolean exist(final @NotNull Integer id);
 
   /**
+   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given name.
+   *
+   * @param name the masculine name of {@link CityRankUpTemplate city rank-up template}
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean nameExist(final @NotNull String name);
+
+  /**
    * Gets a {@link CityRankUpTemplate city rank-up template} from its id.
    *
    * @param id the id of {@link CityRankUpTemplate city rank-up template}
