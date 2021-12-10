@@ -40,6 +40,15 @@ public interface CityRankUpTemplateDataService {
   @NotNull LinkedHashSet<@NotNull CityRankUpTemplate> getAll();
 
   /**
+   * Gets all {@link CityRankUpTemplate city rank-up template} IDs.
+   *
+   * @return {@link LinkedHashSet} of all {@link CityRankUpTemplate city rank-up template} IDs
+   */
+  @PublicApi
+  @Contract(pure = true)
+  @NotNull LinkedHashSet<@NotNull Integer> getAllIds();
+
+  /**
    * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given id.
    *
    * @param id the id of {@link CityRankUpTemplate city rank-up template}
