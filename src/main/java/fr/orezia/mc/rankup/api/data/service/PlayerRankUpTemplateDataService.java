@@ -72,6 +72,21 @@ public interface PlayerRankUpTemplateDataService {
   boolean masculineNameExist(final @NotNull String masculineName);
 
   /**
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given
+   * masculine name, except with the given ID.
+   *
+   * @param masculineName the masculine name of {@link PlayerRankUpTemplate player rank-up
+   *                      template}
+   * @param id            the {@link PlayerRankUpTemplate player rank-up template} ID to exclude
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean masculineNameExistExceptForId(final @NotNull String masculineName,
+      final @NotNull Integer id);
+
+  /**
    * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine
    * name.
    *
@@ -82,6 +97,20 @@ public interface PlayerRankUpTemplateDataService {
   @PublicApi
   @Contract(pure = true)
   boolean feminineNameExist(final @NotNull String feminineName);
+
+  /**
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine
+   * name, except with the given ID.
+   *
+   * @param feminineName the feminine name of {@link PlayerRankUpTemplate player rank-up template}
+   * @param id           the {@link PlayerRankUpTemplate player rank-up template} ID to exclude
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean feminineNameExistExceptForId(final @NotNull String feminineName,
+      final @NotNull Integer id);
 
   /**
    * Gets a {@link PlayerRankUpTemplate player rank-up template} from its id.
@@ -111,6 +140,20 @@ public interface PlayerRankUpTemplateDataService {
   @PublicApi
   @Contract
   boolean update(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
+
+  /**
+   * Renames the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID
+   * with the given masculine and feminine names.
+   *
+   * @param id            the id of {@link PlayerRankUpTemplate player rank-up template}
+   * @param masculineName the masculine name to set
+   * @param feminineName  the feminine name to set
+   * @return {@code true} if update is success, {@code false} otherwise
+   */
+  @PublicApi
+  @Contract
+  boolean rename(final @NotNull Integer id, final @NotNull String masculineName,
+      final @NotNull String feminineName);
 
   /**
    * Deletes {@link PlayerRankUpTemplate player rank-up template}.
