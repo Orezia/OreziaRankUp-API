@@ -71,6 +71,19 @@ public interface CityRankUpTemplateDataService {
   boolean nameExist(final @NotNull String name);
 
   /**
+   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given name, except
+   * with the given ID.
+   *
+   * @param name the name of {@link CityRankUpTemplate city rank-up template}
+   * @param id   the {@link CityRankUpTemplate city rank-up template} ID to exclude
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
+   * {@code false} otherwise
+   */
+  @PublicApi
+  @Contract(pure = true)
+  boolean nameExistExceptForId(final @NotNull String name, final @NotNull Integer id);
+
+  /**
    * Gets a {@link CityRankUpTemplate city rank-up template} from its id.
    *
    * @param id the id of {@link CityRankUpTemplate city rank-up template}
@@ -98,6 +111,18 @@ public interface CityRankUpTemplateDataService {
   @PublicApi
   @Contract
   boolean update(final @NotNull CityRankUpTemplate cityRankUpTemplate);
+
+  /**
+   * Renames the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID with
+   * the given name.
+   *
+   * @param id   the id of {@link CityRankUpTemplate city rank-up template}
+   * @param name the name to set
+   * @return {@code true} if update is success, {@code false} otherwise
+   */
+  @PublicApi
+  @Contract
+  boolean rename(final @NotNull Integer id, final @NotNull String name);
 
   /**
    * Deletes {@link CityRankUpTemplate city rank-up template}.
