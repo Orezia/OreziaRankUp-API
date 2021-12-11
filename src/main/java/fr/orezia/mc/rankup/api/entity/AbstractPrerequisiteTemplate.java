@@ -3,7 +3,6 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
@@ -19,11 +18,10 @@ import org.jetbrains.annotations.Nullable;
  * @see CityPrerequisiteTemplate
  * @since 1.0
  */
-abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
-    ConfigurationSerializable {
+abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable {
 
   String id;
-  String rankUpId;
+  Integer rankUpId;
   String query;
   String action;
 
@@ -41,7 +39,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
   AbstractPrerequisiteTemplate(
       final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (String) requireNonNull(serialization.get("id"));
-    rankUpId = (String) requireNonNull(serialization.get("rankUpId"));
+    rankUpId = (Integer) requireNonNull(serialization.get("rankUpId"));
     query = (String) requireNonNull(serialization.get("query"));
     action = (String) serialization.get("action");
   }
@@ -61,13 +59,33 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
   }
 
   /**
+   * Gets the ID.
+   *
+   * @return the ID
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @NotNull String id();
+
+  /**
+   * Sets the ID.
+   *
+   * @param id the ID to set
+   * @return the current instance
+   */
+
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractPrerequisiteTemplate id(final @NotNull String id);
+
+  /**
    * Gets the rank-up ID.
    *
    * @return the rank-up ID
    */
   @PublicApi
   @Contract(pure = true)
-  public abstract @Nullable String rankUpId();
+  public abstract @Nullable Integer rankUpId();
 
   /**
    * Sets the rank-up ID.
@@ -78,7 +96,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(
-      final @NotNull String rankUpId);
+      final @NotNull Integer rankUpId);
 
   /**
    * Gets the query.

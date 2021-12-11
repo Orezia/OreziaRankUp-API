@@ -3,7 +3,6 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
@@ -21,8 +20,7 @@ import org.jetbrains.annotations.Nullable;
  * @see CityPrerequisite
  * @since 1.0
  */
-abstract class AbstractPrerequisite implements Entity<@NotNull String>,
-    ConfigurationSerializable {
+abstract class AbstractPrerequisite implements ConfigurationSerializable {
 
   String id;
   String playerId;
@@ -61,6 +59,26 @@ abstract class AbstractPrerequisite implements Entity<@NotNull String>,
         "action", action
     );
   }
+
+  /**
+   * Gets the ID.
+   *
+   * @return the ID
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @NotNull String id();
+
+  /**
+   * Sets the ID.
+   *
+   * @param id the ID to set
+   * @return the current instance
+   */
+
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractPrerequisite id(final @NotNull String id);
 
   /**
    * Gets the player UUID.

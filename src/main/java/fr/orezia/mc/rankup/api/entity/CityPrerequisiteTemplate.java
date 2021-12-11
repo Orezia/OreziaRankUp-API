@@ -105,7 +105,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(pure = true)
-  public @Nullable String rankUpId() {
+  public @Nullable Integer rankUpId() {
     return rankUpId;
   }
 
@@ -115,7 +115,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate rankUpId(final @NotNull String rankUpId) {
+  public @This @NotNull CityPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId) {
     this.rankUpId = rankUpId;
     return this;
   }

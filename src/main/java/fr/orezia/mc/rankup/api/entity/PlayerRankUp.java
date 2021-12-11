@@ -4,8 +4,8 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
@@ -187,7 +187,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(pure = true)
-  public @Nullable List<@NotNull PlayerPrerequisite> prerequisites() {
+  public @Nullable Set<@NotNull PlayerPrerequisite> prerequisites() {
     return prerequisites;
   }
 
@@ -198,7 +198,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull PlayerRankUp prerequisites(
-      final @Nullable List<@NotNull PlayerPrerequisite> prerequisites) {
+      final @Nullable Set<@NotNull PlayerPrerequisite> prerequisites) {
     this.prerequisites = prerequisites;
     return this;
   }
