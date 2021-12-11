@@ -6,9 +6,9 @@ import static java.util.Objects.requireNonNull;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.core.api.entity.Cascade;
 import fr.orezia.mc.core.api.entity.Entity;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
@@ -33,7 +33,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
   String items;
 
   @Cascade(ALL)
-  List<P> prerequisites;
+  Set<P> prerequisites;
 
   /**
    * Default constructor.
@@ -52,7 +52,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
     rank = (Integer) requireNonNull(serialization.get("rank"));
     nextRank = (Integer) requireNonNull(serialization.get("nextRank"));
     items = (String) serialization.get("items");
-    prerequisites = (List) requireNonNull(serialization.get("prerequisites"));
+    prerequisites = (Set) requireNonNull(serialization.get("prerequisites"));
   }
 
   /**
@@ -88,7 +88,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp userName(final String userName);
+  public abstract @This @NotNull AbstractRankUp<P> userName(final String userName);
 
   /**
    * Gets the rank.
@@ -107,7 +107,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp rank(final @NotNull Integer rank);
+  public abstract @This @NotNull AbstractRankUp<P> rank(final @NotNull Integer rank);
 
   /**
    * Gets the next rank.
@@ -126,7 +126,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp nextRank(final @NotNull Integer nextRank);
+  public abstract @This @NotNull AbstractRankUp<P> nextRank(final @NotNull Integer nextRank);
 
   /**
    * Gets items as JSON.
@@ -145,7 +145,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp items(final @Nullable String items);
+  public abstract @This @NotNull AbstractRankUp<P> items(final @Nullable String items);
 
   /**
    * Gets the {@link P prerequisites}.
@@ -154,7 +154,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(pure = true)
-  public abstract @Nullable List<@NotNull P> prerequisites();
+  public abstract @Nullable Set<@NotNull P> prerequisites();
 
   /**
    * Sets the {@link P prerequisites}.
@@ -164,8 +164,8 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp prerequisites(
-      final @Nullable List<@NotNull P> prerequisites);
+  public abstract @This @NotNull AbstractRankUp<P> prerequisites(
+      final @Nullable Set<@NotNull P> prerequisites);
 
   /**
    * {@inheritDoc}
@@ -180,7 +180,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
       return false;
     }
 
-    final AbstractRankUp that = (AbstractRankUp) o;
+    final AbstractRankUp<P> that = (AbstractRankUp) o;
     return Objects.equals(id, that.id);
   }
 

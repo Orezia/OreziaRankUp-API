@@ -23,7 +23,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
     ConfigurationSerializable {
 
   String id;
-  String rankUpId;
+  Integer rankUpId;
   String query;
   String action;
 
@@ -41,7 +41,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
   AbstractPrerequisiteTemplate(
       final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (String) requireNonNull(serialization.get("id"));
-    rankUpId = (String) requireNonNull(serialization.get("rankUpId"));
+    rankUpId = (Integer) requireNonNull(serialization.get("rankUpId"));
     query = (String) requireNonNull(serialization.get("query"));
     action = (String) serialization.get("action");
   }
@@ -67,7 +67,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
    */
   @PublicApi
   @Contract(pure = true)
-  public abstract @Nullable String rankUpId();
+  public abstract @Nullable Integer rankUpId();
 
   /**
    * Sets the rank-up ID.
@@ -78,7 +78,7 @@ abstract class AbstractPrerequisiteTemplate implements Entity<@NotNull String>,
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(
-      final @NotNull String rankUpId);
+      final @NotNull Integer rankUpId);
 
   /**
    * Gets the query.

@@ -3,8 +3,8 @@ package fr.orezia.mc.rankup.api.entity;
 import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
@@ -158,7 +158,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(pure = true)
-  public @Nullable List<@NotNull CityPrerequisiteTemplate> prerequisites() {
+  public @Nullable Set<@NotNull CityPrerequisiteTemplate> prerequisites() {
     return prerequisites;
   }
 
@@ -169,7 +169,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public @This @NotNull CityRankUpTemplate prerequisites(
-      final @Nullable List<@NotNull CityPrerequisiteTemplate> prerequisites) {
+      final @Nullable Set<@NotNull CityPrerequisiteTemplate> prerequisites) {
     this.prerequisites = prerequisites;
     return this;
   }

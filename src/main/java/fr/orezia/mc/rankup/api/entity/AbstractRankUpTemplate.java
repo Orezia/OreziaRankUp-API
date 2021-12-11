@@ -6,9 +6,9 @@ import static java.util.Objects.requireNonNull;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.core.api.entity.Cascade;
 import fr.orezia.mc.core.api.entity.Entity;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
@@ -32,7 +32,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
   String actions;
 
   @Cascade(ALL)
-  List<P> prerequisites;
+  Set<P> prerequisites;
 
   /**
    * Default constructor.
@@ -50,7 +50,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
     nextId = (Integer) serialization.get("nextId");
     items = (String) serialization.get("items");
     actions = (String) serialization.get("actions");
-    prerequisites = (List) requireNonNull(serialization.get("prerequisites"));
+    prerequisites = (Set) requireNonNull(serialization.get("prerequisites"));
   }
 
   /**
@@ -85,7 +85,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate nextId(
+  public abstract @This @NotNull AbstractRankUpTemplate<P> nextId(
       final @Nullable Integer nextId);
 
   /**
@@ -105,7 +105,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate items(final @Nullable String items);
+  public abstract @This @NotNull AbstractRankUpTemplate<P> items(final @Nullable String items);
 
   /**
    * Gets rank-up' actions.
@@ -124,7 +124,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate actions(final @Nullable String actions);
+  public abstract @This @NotNull AbstractRankUpTemplate<P> actions(final @Nullable String actions);
 
   /**
    * Gets the {@link P prerequisites}.
@@ -133,7 +133,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    */
   @PublicApi
   @Contract(pure = true)
-  public abstract @Nullable List<@NotNull P> prerequisites();
+  public abstract @Nullable Set<@NotNull P> prerequisites();
 
   /**
    * Sets the {@link P prerequisites}.
@@ -143,8 +143,8 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate prerequisites(
-      final @Nullable List<@NotNull P> prerequisites);
+  public abstract @This @NotNull AbstractRankUpTemplate<P> prerequisites(
+      final @Nullable Set<@NotNull P> prerequisites);
 
   /**
    * {@inheritDoc}
@@ -159,7 +159,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
       return false;
     }
 
-    final AbstractRankUpTemplate that = (AbstractRankUpTemplate) o;
+    final AbstractRankUpTemplate<P> that = (AbstractRankUpTemplate) o;
     return Objects.equals(id, that.id);
   }
 
