@@ -70,7 +70,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate id(final @NotNull Integer id) {
+  public @NotNull PlayerRankUpTemplate id(final @NotNull Integer id) {
     this.id = id;
     return this;
   }

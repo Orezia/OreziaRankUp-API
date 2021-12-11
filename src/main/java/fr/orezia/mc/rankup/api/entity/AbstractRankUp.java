@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.core.api.entity.Cascade;
-import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -23,8 +22,7 @@ import org.jetbrains.annotations.Nullable;
  * @see CityRankUp
  * @since 1.0
  */
-abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<@NotNull String>,
-    ConfigurationSerializable {
+abstract class AbstractRankUp<P extends AbstractPrerequisite> implements ConfigurationSerializable {
 
   String id;
   String userName;
@@ -70,6 +68,26 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Entity<
         "prerequisites", prerequisites
     );
   }
+
+  /**
+   * Gets the ID.
+   *
+   * @return the ID
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @NotNull String id();
+
+  /**
+   * Sets the ID.
+   *
+   * @param id the ID to set
+   * @return the current instance
+   */
+
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractRankUp<P> id(final @NotNull String id);
 
   /**
    * Gets the player's username.

@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.core.api.entity.Cascade;
-import fr.orezia.mc.core.api.entity.Entity;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -24,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
  * @since 1.0
  */
 abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
-    implements Entity<@NotNull Integer>, ConfigurationSerializable {
+    implements ConfigurationSerializable {
 
   Integer id;
   Integer nextId;
@@ -67,6 +66,26 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
         "prerequisites", prerequisites
     );
   }
+
+  /**
+   * Gets the ID.
+   *
+   * @return the ID
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @NotNull Integer id();
+
+  /**
+   * Sets the ID.
+   *
+   * @param id the ID to set
+   * @return the current instance
+   */
+
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractRankUpTemplate<P> id(final @NotNull Integer id);
 
   /**
    * Gets the previous rank-up ID.

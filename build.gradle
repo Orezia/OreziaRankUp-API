@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'org.checkerframework' version '0.6.3'
 }
 
 group 'fr.orezia.mc'
@@ -37,16 +36,6 @@ repositories {
 
 dependencies {
     api "fr.orezia.mc:oreziacore-api:1.0-SNAPSHOT"
-    implementation 'org.checkerframework:checker:3.19.0'
-    checkerFramework 'org.checkerframework:checker:3.19.0'
-    checkerFramework 'org.checkerframework:checker-qual:3.19.0'
-}
-
-checkerFramework {
-    checkers = [
-            'org.checkerframework.common.returnsreceiver.ReturnsReceiverChecker',
-            'org.checkerframework.checker.optional.OptionalChecker'
-    ]
 }
 
 publishing {
