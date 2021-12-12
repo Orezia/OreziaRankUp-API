@@ -26,7 +26,7 @@ public interface PlayerRankUpTemplateDataService {
    * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
-  @Contract
+  @Contract(mutates = "param1")
   boolean create(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
@@ -45,7 +45,7 @@ public interface PlayerRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull LinkedHashSet<@NotNull Integer> getAllIds();
+  @NotNull Set<@NotNull Integer> getAllIds();
 
   /**
    * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given id.
@@ -154,17 +154,6 @@ public interface PlayerRankUpTemplateDataService {
   @Contract
   boolean rename(final @NotNull Integer id, final @NotNull String masculineName,
       final @NotNull String feminineName);
-
-  /**
-   * Deletes {@link PlayerRankUpTemplate player rank-up template}.
-   *
-   * @param id the {@link PlayerRankUpTemplate player rank-up template} id
-   * @return {@code true} if delete is success, {@code false} otherwise
-   */
-  @PublicApi
-  @Contract
-  boolean delete(final @NotNull Integer id);
-
   // endregion
 
   // region PlayerPrerequisiteTemplate services
@@ -173,15 +162,13 @@ public interface PlayerRankUpTemplateDataService {
    * Adds a {@link PlayerPrerequisiteTemplate player prerequisite template} to {@link
    * PlayerRankUpTemplate player rank-up template}.
    *
-   * @param playerRankUpTemplate       the {@link PlayerRankUpTemplate player rank-up template} to
-   *                                   update
    * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
    *                                   template} to add
    * @return {@code true} if prerequisite template is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisiteTemplate(final @NotNull PlayerRankUpTemplate playerRankUpTemplate,
+  boolean addPrerequisiteTemplate(
       final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**

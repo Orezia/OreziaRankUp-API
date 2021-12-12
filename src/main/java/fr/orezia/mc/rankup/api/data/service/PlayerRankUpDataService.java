@@ -75,49 +75,49 @@ public interface PlayerRankUpDataService {
   // region PlayerPrerequisite services
 
   /**
-   * Adds a {@link PlayerPrerequisite player prerequisite} to {@link PlayerRankUp player rank-up}.
+   * Adds a {@link PlayerPrerequisite player prerequisite}.
    *
-   * @param playerRankUp       the {@link PlayerRankUp player rank-up} to update
    * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite} to add
    * @return {@code true} if prerequisite is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisite(final @NotNull PlayerRankUp playerRankUp,
-      final @NotNull PlayerPrerequisite playerPrerequisite);
+  boolean addPrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
 
   /**
-   * Gets all {@link PlayerPrerequisite player prerequisite} from {@link PlayerRankUp player
-   * rank-up}.
+   * Gets all {@link PlayerPrerequisite player prerequisite} from player ID.
    *
-   * @param playerRankUp the parent {@link PlayerRankUp player rank-up}
+   * @param playerId the player ID
    * @return {@link Set} of all {@link PlayerPrerequisite player prerequisite}
    */
   @PublicApi
   @Contract(pure = true)
   @NotNull Set<@NotNull PlayerPrerequisite> getAllPrerequisite(
-      final @NotNull PlayerRankUp playerRankUp);
+      final @NotNull String playerId);
 
   /**
    * Checks if a {@link PlayerPrerequisite player prerequisite} exists with the given id.
    *
-   * @param id the id of {@link PlayerPrerequisite player prerequisite}
+   * @param id       the id of {@link PlayerPrerequisite player prerequisite}
+   * @param playerId the player ID
    * @return {@code true} if a {@link PlayerPrerequisite player prerequisite} has been found, {@code
    * false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean existPrerequisite(final @NotNull String id);
+  boolean existPrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   /**
    * Gets a {@link PlayerPrerequisite player prerequisite} from its id.
    *
-   * @param id the id of {@link PlayerPrerequisite player prerequisite}
+   * @param id       the id of {@link PlayerPrerequisite player prerequisite}
+   * @param playerId the player ID
    * @return the found {@link PlayerPrerequisite player prerequisite}
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<PlayerPrerequisite> getPrerequisite(final @NotNull String id);
+  @NotNull Optional<PlayerPrerequisite> getPrerequisite(final @NotNull String id,
+      final @NotNull String playerId);
 
   /**
    * Updates the {@link PlayerPrerequisite player prerequisite}.
@@ -132,12 +132,13 @@ public interface PlayerRankUpDataService {
   /**
    * Removes {@link PlayerPrerequisite player prerequisite} from {@link CityRankUp player rank-up}.
    *
-   * @param id the ID of {@link PlayerPrerequisite player prerequisite} to remove
+   * @param id       the ID of {@link PlayerPrerequisite player prerequisite} to remove
+   * @param playerId the player ID
    * @return {@code true} if remove is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean removePrerequisite(final @NotNull String id);
+  boolean removePrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   // endregion
 
