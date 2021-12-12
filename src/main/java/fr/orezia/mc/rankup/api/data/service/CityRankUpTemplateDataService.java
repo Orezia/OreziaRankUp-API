@@ -27,7 +27,7 @@ public interface CityRankUpTemplateDataService {
    * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
-  @Contract
+  @Contract(mutates = "param1")
   boolean create(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
@@ -46,7 +46,7 @@ public interface CityRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull LinkedHashSet<@NotNull Integer> getAllIds();
+  @NotNull Set<@NotNull Integer> getAllIds();
 
   /**
    * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given id.
@@ -124,16 +124,6 @@ public interface CityRankUpTemplateDataService {
   @Contract
   boolean rename(final @NotNull Integer id, final @NotNull String name);
 
-  /**
-   * Deletes {@link CityRankUpTemplate city rank-up template}.
-   *
-   * @param id the {@link CityRankUpTemplate city rank-up template} id
-   * @return {@code true} if delete is success, {@code false} otherwise
-   */
-  @PublicApi
-  @Contract
-  boolean delete(final @NotNull Integer id);
-
   // endregion
 
   // region CityPrerequisiteTemplate services
@@ -142,15 +132,13 @@ public interface CityRankUpTemplateDataService {
    * Adds a {@link CityPrerequisiteTemplate city prerequisite template} to {@link CityRankUpTemplate
    * city rank-up template}.
    *
-   * @param cityRankUpTemplate       the {@link CityRankUpTemplate city rank-up template} to update
    * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite template}
    *                                 to add
    * @return {@code true} if prerequisite template is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisiteTemplate(final @NotNull CityRankUpTemplate cityRankUpTemplate,
-      final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
+  boolean addPrerequisiteTemplate(final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
    * Gets all {@link CityPrerequisiteTemplate city prerequisite template} from {@link
