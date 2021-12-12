@@ -4,7 +4,6 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisiteTemplate;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUpTemplate;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -23,11 +22,10 @@ public interface PlayerRankUpTemplateDataService {
    * Creates, in persistence, a {@link PlayerRankUpTemplate player rank-up template}.
    *
    * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template} data
-   * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
   @Contract(mutates = "param1")
-  boolean create(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
+  void create(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
    * Gets all {@link PlayerRankUpTemplate player rank-up template}.
@@ -120,7 +118,7 @@ public interface PlayerRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<PlayerRankUpTemplate> get(final @NotNull Integer id);
+  @NotNull PlayerRankUpTemplate get(final @NotNull Integer id);
 
   /**
    * Gets the very first {@link PlayerRankUpTemplate player rank-up template}.
@@ -135,11 +133,10 @@ public interface PlayerRankUpTemplateDataService {
    * Updates the {@link PlayerRankUpTemplate player rank-up template}.
    *
    * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean update(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
+  void update(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
    * Renames the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID
@@ -148,11 +145,10 @@ public interface PlayerRankUpTemplateDataService {
    * @param id            the id of {@link PlayerRankUpTemplate player rank-up template}
    * @param masculineName the masculine name to set
    * @param feminineName  the feminine name to set
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean rename(final @NotNull Integer id, final @NotNull String masculineName,
+  void rename(final @NotNull Integer id, final @NotNull String masculineName,
       final @NotNull String feminineName);
   // endregion
 
@@ -164,11 +160,10 @@ public interface PlayerRankUpTemplateDataService {
    *
    * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
    *                                   template} to add
-   * @return {@code true} if prerequisite template is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisiteTemplate(
+  void addPrerequisiteTemplate(
       final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**
@@ -202,18 +197,17 @@ public interface PlayerRankUpTemplateDataService {
    * @return the found {@link PlayerPrerequisiteTemplate player prerequisite template}
    */
   @PublicApi
-  @NotNull Optional<PlayerPrerequisiteTemplate> getPrerequisite(final @NotNull String id);
+  @NotNull PlayerPrerequisiteTemplate getPrerequisite(final @NotNull String id);
 
   /**
    * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template}.
    *
    * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
    *                                   template}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean updatePrerequisiteTemplate(
+  void updatePrerequisiteTemplate(
       final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**
@@ -221,11 +215,10 @@ public interface PlayerRankUpTemplateDataService {
    * PlayerRankUpTemplate player rank-up template}.
    *
    * @param id the ID of {@link PlayerPrerequisiteTemplate player prerequisite template} to remove
-   * @return {@code true} if remove is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean removePrerequisiteTemplate(final @NotNull String id);
+  void removePrerequisiteTemplate(final @NotNull String id);
 
   // endregion
 

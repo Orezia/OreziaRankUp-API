@@ -5,7 +5,6 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityPrerequisiteTemplate;
 import fr.orezia.mc.rankup.api.entity.CityRankUpTemplate;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +23,10 @@ public interface CityRankUpTemplateDataService {
    * Creates, in persistence, a {@link CityRankUpTemplate city rank-up template}.
    *
    * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template} data
-   * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
   @Contract(mutates = "param1")
-  boolean create(final @NotNull CityRankUpTemplate cityRankUpTemplate);
+  void create(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
    * Gets all {@link CityRankUpTemplate city rank-up template}.
@@ -91,7 +89,7 @@ public interface CityRankUpTemplateDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<CityRankUpTemplate> get(final @NotNull Integer id);
+  @NotNull CityRankUpTemplate get(final @NotNull Integer id);
 
   /**
    * Gets the very first {@link CityRankUpTemplate city rank-up template}.
@@ -106,11 +104,10 @@ public interface CityRankUpTemplateDataService {
    * Updates the {@link CityRankUpTemplate city rank-up template}.
    *
    * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean update(final @NotNull CityRankUpTemplate cityRankUpTemplate);
+  void update(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
    * Renames the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID with
@@ -118,11 +115,10 @@ public interface CityRankUpTemplateDataService {
    *
    * @param id   the id of {@link CityRankUpTemplate city rank-up template}
    * @param name the name to set
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean rename(final @NotNull Integer id, final @NotNull String name);
+  void rename(final @NotNull Integer id, final @NotNull String name);
 
   // endregion
 
@@ -134,11 +130,10 @@ public interface CityRankUpTemplateDataService {
    *
    * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite template}
    *                                 to add
-   * @return {@code true} if prerequisite template is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisiteTemplate(final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
+  void addPrerequisiteTemplate(final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
    * Gets all {@link CityPrerequisiteTemplate city prerequisite template} from {@link
@@ -171,18 +166,17 @@ public interface CityRankUpTemplateDataService {
    * @return the found {@link CityPrerequisiteTemplate city prerequisite template}
    */
   @PublicApi
-  @NotNull Optional<CityPrerequisiteTemplate> getPrerequisite(final @NotNull String id);
+  @NotNull CityPrerequisiteTemplate getPrerequisite(final @NotNull String id);
 
   /**
    * Updates the {@link CityPrerequisiteTemplate city prerequisite template}.
    *
    * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite
    *                                 template}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean updatePrerequisiteTemplate(
+  void updatePrerequisiteTemplate(
       final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
@@ -190,11 +184,10 @@ public interface CityRankUpTemplateDataService {
    * CityRankUpTemplate city rank-up template}.
    *
    * @param id the ID of {@link CityPrerequisiteTemplate city prerequisite template} to remove
-   * @return {@code true} if remove is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean removePrerequisiteTemplate(final @NotNull String id);
+  void removePrerequisiteTemplate(final @NotNull String id);
 
   // endregion
 

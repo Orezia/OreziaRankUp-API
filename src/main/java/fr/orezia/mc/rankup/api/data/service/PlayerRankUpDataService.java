@@ -4,7 +4,6 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisite;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUp;
-import java.util.Optional;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -23,11 +22,10 @@ public interface PlayerRankUpDataService {
    * Creates, in persistence, a {@link PlayerRankUp player rank-up}.
    *
    * @param playerRankUp the {@link PlayerRankUp player rank-up} data
-   * @return {@code true} if creation is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean create(final @NotNull PlayerRankUp playerRankUp);
+  void create(final @NotNull PlayerRankUp playerRankUp);
 
   /**
    * Checks if a {@link PlayerRankUp player rank-up} exists with the given id.
@@ -48,27 +46,25 @@ public interface PlayerRankUpDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<PlayerRankUp> get(final @NotNull String id);
+  @NotNull PlayerRankUp get(final @NotNull String id);
 
   /**
    * Updates the {@link PlayerRankUp player rank-up}.
    *
    * @param playerRankUp the {@link PlayerRankUp player rank-up}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean update(final @NotNull PlayerRankUp playerRankUp);
+  void update(final @NotNull PlayerRankUp playerRankUp);
 
   /**
    * Deletes {@link PlayerRankUp player rank-up}.
    *
    * @param id the {@link PlayerRankUp player rank-up} id
-   * @return {@code true} if delete is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean delete(final @NotNull String id);
+  void delete(final @NotNull String id);
 
   // endregion
 
@@ -78,11 +74,10 @@ public interface PlayerRankUpDataService {
    * Adds a {@link PlayerPrerequisite player prerequisite}.
    *
    * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite} to add
-   * @return {@code true} if prerequisite is added, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean addPrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
+  void addPrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
 
   /**
    * Gets all {@link PlayerPrerequisite player prerequisite} from player ID.
@@ -116,29 +111,27 @@ public interface PlayerRankUpDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Optional<PlayerPrerequisite> getPrerequisite(final @NotNull String id,
+  @NotNull PlayerPrerequisite getPrerequisite(final @NotNull String id,
       final @NotNull String playerId);
 
   /**
    * Updates the {@link PlayerPrerequisite player prerequisite}.
    *
    * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite}
-   * @return {@code true} if update is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean updatePrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
+  void updatePrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
 
   /**
    * Removes {@link PlayerPrerequisite player prerequisite} from {@link CityRankUp player rank-up}.
    *
    * @param id       the ID of {@link PlayerPrerequisite player prerequisite} to remove
    * @param playerId the player ID
-   * @return {@code true} if remove is success, {@code false} otherwise
    */
   @PublicApi
   @Contract
-  boolean removePrerequisite(final @NotNull String id, final @NotNull String playerId);
+  void removePrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   // endregion
 
