@@ -2,6 +2,7 @@ package fr.orezia.mc.rankup.api.data.service;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityRankUp;
+import fr.orezia.mc.rankup.api.entity.Gender;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisite;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUp;
 import java.util.Set;
@@ -56,6 +57,17 @@ public interface PlayerRankUpDataService {
   @PublicApi
   @Contract
   void update(final @NotNull PlayerRankUp playerRankUp);
+
+  /**
+   * Updates the {@link Gender gender} of the {@link PlayerRankUp player rank-up} corresponding to
+   * the given ID.
+   *
+   * @param id     the {@link PlayerRankUp player rank-up} ID
+   * @param gender the {@link Gender gender} to set
+   */
+  @PublicApi
+  @Contract
+  void updateGender(final @NotNull String id, final @NotNull Gender gender);
 
   /**
    * Deletes {@link PlayerRankUp player rank-up}.
