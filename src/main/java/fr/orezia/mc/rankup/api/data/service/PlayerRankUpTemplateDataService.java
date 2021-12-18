@@ -170,13 +170,14 @@ public interface PlayerRankUpTemplateDataService {
    * Gets all {@link PlayerPrerequisiteTemplate player prerequisite template} from {@link
    * PlayerRankUpTemplate player rank-up template}.
    *
-   * @param playerRankUpTemplate the parent {@link PlayerRankUpTemplate player rank-up template}
+   * @param playerRankUpTemplateId the parent {@link PlayerRankUpTemplate player rank-up template}
+   *                               ID
    * @return {@link Set} of all {@link PlayerPrerequisiteTemplate player prerequisite template}
    */
   @PublicApi
   @Contract(pure = true)
   @NotNull Set<@NotNull PlayerPrerequisiteTemplate> getAllPrerequisiteTemplate(
-      final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
+      final int playerRankUpTemplateId);
 
   /**
    * Checks if a {@link PlayerPrerequisiteTemplate player prerequisite template} exists with the
