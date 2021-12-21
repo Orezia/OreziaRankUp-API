@@ -226,6 +226,18 @@ public interface PlayerRankUpTemplateDataService {
       final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**
+   * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template} query.
+   *
+   * @param playerPrerequisiteTemplateId the {@link PlayerPrerequisiteTemplate player prerequisite
+   *                                     template}
+   * @param query                        the new query
+   */
+  @PublicApi
+  @Contract
+  void updatePrerequisiteTemplateQuery(final @NotNull String playerPrerequisiteTemplateId,
+      final @NotNull String query);
+
+  /**
    * Removes {@link PlayerPrerequisiteTemplate player prerequisite template} from {@link
    * PlayerRankUpTemplate player rank-up template}.
    *
