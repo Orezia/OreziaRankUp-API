@@ -7,6 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Data service for {@link PlayerRankUpTemplate player rank-up template}.
@@ -236,6 +237,18 @@ public interface PlayerRankUpTemplateDataService {
   @Contract
   void updatePrerequisiteTemplateQuery(final @NotNull String playerPrerequisiteTemplateId,
       final @NotNull String query);
+
+  /**
+   * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template} action.
+   *
+   * @param playerPrerequisiteTemplateId the {@link PlayerPrerequisiteTemplate player prerequisite
+   *                                     template}
+   * @param action                       the new action, may be {@code null}
+   */
+  @PublicApi
+  @Contract
+  void updatePrerequisiteTemplateAction(final @NotNull String playerPrerequisiteTemplateId,
+      final @Nullable String action);
 
   /**
    * Removes {@link PlayerPrerequisiteTemplate player prerequisite template} from {@link

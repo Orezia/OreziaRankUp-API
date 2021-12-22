@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 public interface CityRankUpTemplateDataService {
 
   // region CityRankUpTemplate services
-
   /**
    * Creates, in persistence, a {@link CityRankUpTemplate city rank-up template}.
    *
@@ -123,7 +122,6 @@ public interface CityRankUpTemplateDataService {
   // endregion
 
   // region CityPrerequisiteTemplate services
-
   /**
    * Adds a {@link CityPrerequisiteTemplate city prerequisite template} to {@link CityRankUpTemplate
    * city rank-up template}.
@@ -147,7 +145,6 @@ public interface CityRankUpTemplateDataService {
   @NotNull Set<@NotNull CityPrerequisiteTemplate> getAllPrerequisiteTemplate(
       final int cityRankUpTemplateId);
 
-
   /**
    * Gets all {@link CityPrerequisiteTemplate city prerequisite template} IDs from {@link
    * CityRankUpTemplate city rank-up template}.
@@ -159,7 +156,6 @@ public interface CityRankUpTemplateDataService {
   @Contract(pure = true)
   @NotNull Set<@NotNull String> getAllPrerequisiteTemplateIDs(
       final int cityRankUpTemplateId);
-
 
   /**
    * Checks if a {@link CityPrerequisiteTemplate city prerequisite template} exists with the given
