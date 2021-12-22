@@ -194,6 +194,18 @@ public interface CityRankUpTemplateDataService {
       final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
+   * Updates the {@link CityPrerequisiteTemplate city prerequisite template} query.
+   *
+   * @param cityPrerequisiteTemplateId the {@link CityPrerequisiteTemplate city prerequisite
+   *                                     template}
+   * @param query                        the new query
+   */
+  @PublicApi
+  @Contract
+  void updatePrerequisiteTemplateQuery(final @NotNull String cityPrerequisiteTemplateId,
+      final @NotNull String query);
+
+  /**
    * Removes {@link CityPrerequisiteTemplate city prerequisite template} from {@link
    * CityRankUpTemplate city rank-up template}.
    *
