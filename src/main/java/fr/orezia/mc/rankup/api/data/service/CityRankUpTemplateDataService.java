@@ -8,6 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Data service for {@link CityRankUpTemplate city rank-up template}.
@@ -18,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public interface CityRankUpTemplateDataService {
 
   // region CityRankUpTemplate services
+
   /**
    * Creates, in persistence, a {@link CityRankUpTemplate city rank-up template}.
    *
@@ -122,6 +124,7 @@ public interface CityRankUpTemplateDataService {
   // endregion
 
   // region CityPrerequisiteTemplate services
+
   /**
    * Adds a {@link CityPrerequisiteTemplate city prerequisite template} to {@link CityRankUpTemplate
    * city rank-up template}.
@@ -193,13 +196,25 @@ public interface CityRankUpTemplateDataService {
    * Updates the {@link CityPrerequisiteTemplate city prerequisite template} query.
    *
    * @param cityPrerequisiteTemplateId the {@link CityPrerequisiteTemplate city prerequisite
-   *                                     template}
-   * @param query                        the new query
+   *                                   template}
+   * @param query                      the new query
    */
   @PublicApi
   @Contract
   void updatePrerequisiteTemplateQuery(final @NotNull String cityPrerequisiteTemplateId,
       final @NotNull String query);
+
+  /**
+   * Updates the {@link CityPrerequisiteTemplate city prerequisite template} action.
+   *
+   * @param cityPrerequisiteTemplateId the {@link CityPrerequisiteTemplate city prerequisite
+   *                                   template}
+   * @param action                     the new action, may be {@code null}
+   */
+  @PublicApi
+  @Contract
+  void updatePrerequisiteTemplateAction(final @NotNull String cityPrerequisiteTemplateId,
+      final @Nullable String action);
 
   /**
    * Removes {@link CityPrerequisiteTemplate city prerequisite template} from {@link
