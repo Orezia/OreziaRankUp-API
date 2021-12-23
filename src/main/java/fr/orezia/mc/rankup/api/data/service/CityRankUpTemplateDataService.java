@@ -111,6 +111,16 @@ public interface CityRankUpTemplateDataService {
   void update(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
+   * Updates the actions of {@link CityRankUpTemplate city rank-up template}.
+   *
+   * @param cityRankUpTemplateId the {@link CityRankUpTemplate city rank-up template} ID
+   * @param actions                the new actions
+   */
+  @PublicApi
+  @Contract
+  void updateActions(final @NotNull Integer cityRankUpTemplateId, final @Nullable String actions);
+
+  /**
    * Renames the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID with
    * the given name.
    *
