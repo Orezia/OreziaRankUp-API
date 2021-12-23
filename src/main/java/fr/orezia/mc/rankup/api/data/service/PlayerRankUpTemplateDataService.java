@@ -140,6 +140,16 @@ public interface PlayerRankUpTemplateDataService {
   void update(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
+   * Updates the actions of {@link PlayerRankUpTemplate player rank-up template}.
+   *
+   * @param playerRankUpTemplateId the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @param actions                the new actions
+   */
+  @PublicApi
+  @Contract
+  void updateActions(final @NotNull Integer playerRankUpTemplateId, final @Nullable String actions);
+
+  /**
    * Renames the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID
    * with the given masculine and feminine names.
    *
