@@ -1,0 +1,56 @@
+name: Publishes package to Github Packages
+on:
+  push:
+    branches: [ main ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkouts sources
+      - uses: actions/setup-java@v2
+        name: Sets up JDK 17
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Maven settings
+        uses: s4u/maven-settings-action@v2.5.0
+        with:
+          servers: |
+            [{
+              "id": "github-core",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-plugins",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-core",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-core-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-rankup-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-tri-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            }]
+      - name: Publish package
+        run: mvn --batch-mode package deploy:deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ secrets.USERNAME }}
+          TOKEN: ${{ secrets.TOKEN }}

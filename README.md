@@ -1,7 +1,7 @@
 # OreziaRankUp public API
 
-![Java version](https://img.shields.io/badge/java-^16-green)
-![MC version](https://img.shields.io/badge/MC-v1.17-blue)
+![Java version](https://img.shields.io/badge/java-^17-green)
+![MC version](https://img.shields.io/badge/MC-v1.18.1-blue)
 [![GitHub release](https://img.shields.io/badge/release-v1.0-blue)](https://github.com/Orezia/OreziaRankUp-api/releases/tag/1.0)
 
 [version française](./LISEZMOI.md)
