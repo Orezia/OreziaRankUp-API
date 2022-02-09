@@ -1,0 +1,56 @@
+# This workflow will build a Java project with Gradle
+
+name: Maven build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkouts sources
+      - uses: actions/setup-java@v2
+        name: Sets up JDK 17
+        with:
+          distribution: 'adopt'
+          java-version: 17
+      - name: Maven settings
+        uses: s4u/maven-settings-action@v2.5.0
+        with:
+          servers: |
+            [{
+              "id": "github-core",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-plugins",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-core",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-core-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-rankup-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            },{
+              "id": "github-tri-api",
+              "username": "${{ secrets.USERNAME }}",
+              "password": "${{ secrets.TOKEN }}"
+            }]
+      - name: Build with maven
+        run: mvn --batch-mode --update-snapshots verify
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ secrets.USERNAME }}
+          TOKEN: ${{ secrets.TOKEN }}
