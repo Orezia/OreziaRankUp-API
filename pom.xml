@@ -17,6 +17,12 @@
     <url>https://oreziamc.fr</url>
   </organization>
 
+  <repositories>
+    <repository>
+      <id>github-plugins</id>
+      <url>https://maven.pkg.github.com/Orezia/OreziaPlugins</url>
+    </repository>
+  </repositories>
 
   <distributionManagement>
     <repository>
