@@ -31,6 +31,7 @@ Maven :
   </repository>
 </repositories>
 ```
+
 ```xml
 <dependencies>
   <dependency>
@@ -51,6 +52,7 @@ repositories {
     }
 }
 ```
+
 ```groovy
 dependencies {
     implementation group: 'fr.orezia.mc', name: 'OreziaRankUp-API', version: VERSION
@@ -68,4 +70,9 @@ If your plugin is hard-dependent on `OreziaRankUp`, you can consider the depende
 ## Version :
 
 - __1.0__
-    - TODO
+  - \+ Functions to get each service
+  - \+ Definition of the city rank-up template service
+  - \+ Definition of the city rank-up service
+  - \+ Definition of the player rank-up template service
+  - \+ Definition of the player rank-up service
+  - \+ Definition of all entities
