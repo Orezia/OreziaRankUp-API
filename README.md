@@ -1,46 +1,78 @@
-# OreziaRankUp public API
+# Orezia Rank-Up API
 
-![Java version](https://img.shields.io/badge/java-^17-green)
-![MC version](https://img.shields.io/badge/MC-v1.18.1-blue)
-[![GitHub release](https://img.shields.io/badge/release-v1.0-blue)](https://github.com/Orezia/OreziaRankUp-api/releases/tag/1.0)
+![Java version](https://img.shields.io/badge/java-^17-yellow)
+![MC version](https://img.shields.io/badge/MC-v1.18.1-green)
+[![GitHub release](https://img.shields.io/badge/release-vX-blue)](https://github.com/dederobert/OreziaRankUp-API/releases/tag/X)
 
-[version française](./LISEZMOI.md)
+[![Maven build](https://github.com/Orezia/OreziaRankUp-API/actions/workflows/maven_build.yml/badge.svg)](https://github.com/Orezia/OreziaRankUp-API/actions/workflows/maven_build.yml)
+
+Public API for the `OreziaRankUp` plugin.
+
+[Version française](./LISEZMOI.md)
 
 ## Table of contents :
 
 - [Integrating](#integrating-)
+  - [Soft-dependency](#soft-dependency-)
+  - [Hard-dependency](#hard-dependency-)
 - [Version](#version-)
 
 ## Integrating :
 
-In order to integrate your plugin with OreziaRankUp, you have to `OreziaRankUp-api` as dependency of your
-project.
+In order to integrate your plugin with `OreziaRankUp`, you have to add `OreziaRankUp-API` as dependency of your project.
+
+Maven :
+
+```xml
+<repositories>
+  <repository>
+    <id>github-orezia-rankup-api</id>
+    <url>https://maven.pkg.github.com/Orezia/OreziaRankUp-API</url>
+  </repository>
+</repositories>
+```
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>fr.orezia.mc</groupId>
+    <artifactId>oreziarankup-api</artifactId>
+    <version>VERSION</version>
+  </dependency>
+</dependencies>
+```
 
 Gradle :
 
 ```groovy
 repositories {
     maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/Orezia/OreziaRankUp-api")
+        name = "GithubOreziaRankUpApi"
+        url = uri("https://maven.pkg.github.com/Orezia/OreziaRankUp-API")
     }
-}
-
-dependencies {
-    implementation group: 'fr.orezia.mc', name: 'OreziaRankUp-api', version: VERSION
 }
 ```
 
-### Soft-depend
+```groovy
+dependencies {
+    implementation group: 'fr.orezia.mc', name: 'OreziaRankUp-API', version: VERSION
+}
+```
 
-In order to add OreziaRankUp as soft-depend, you have to shade the dependency `OreziaRankUp-api` in your
-plugin (Include the dependency in your plugin JAR).
+### Soft-dependency :
 
-### Hard-depend
+In order to add `OreziaRankUp` as soft-dependency, you have to shade the dependency `OreziaRankUp-API` in your plugin (i.e. include the dependency in your plugin JAR).
 
-If your plugin hard-depend on OreziaRankUp, you can consider the dependency `OreziaRankUp-api` as
-provided.
+### Hard-dependency :
+
+If your plugin is hard-dependent on `OreziaRankUp`, you can consider the dependency `OreziaRankUp-API` as provided.
 
 ## Version :
 
-- __1.0__: Initial version
+- __1.0__
+  - \+ Functions to get each service
+  - \+ Definition of the city rank-up template service
+  - \+ Definition of the city rank-up service
+  - \+ Definition of the player rank-up template service
+  - \+ Definition of the player rank-up service
+  - \+ Definition of all entities
