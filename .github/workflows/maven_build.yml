@@ -32,10 +32,6 @@ jobs:
               "username": "${{ secrets.USERNAME }}",
               "password": "${{ secrets.TOKEN }}"
             },{
-              "id": "github-core",
-              "username": "${{ secrets.USERNAME }}",
-              "password": "${{ secrets.TOKEN }}"
-            },{
               "id": "github-core-api",
               "username": "${{ secrets.USERNAME }}",
               "password": "${{ secrets.TOKEN }}"
