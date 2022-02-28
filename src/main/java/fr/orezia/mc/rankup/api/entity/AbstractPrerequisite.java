@@ -26,6 +26,9 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
   String playerId;
   String query;
   String action;
+  String title;
+  String lore;
+  String icon;
 
   /**
    * Default constructor.
@@ -44,6 +47,9 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
     playerId = (String) requireNonNull(serialization.get("playerId"));
     query = (String) requireNonNull(serialization.get("query"));
     action = (String) serialization.get("action");
+    title = (String) serialization.get("title");
+    lore = (String) serialization.get("lore");
+    icon = (String) serialization.get("icon");
   }
 
   /**
@@ -56,7 +62,10 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
         "id", id,
         "playerId", playerId,
         "query", query,
-        "action", action
+        "action", action,
+        "title", title,
+        "lore", lore,
+        "icon", icon
     );
   }
 
@@ -136,6 +145,63 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public abstract @This @NotNull AbstractPrerequisite action(final @Nullable String action);
+
+  /**
+   * Gets the title.
+   *
+   * @return the title
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String title();
+
+  /**
+   * Sets the title.
+   *
+   * @param title the new title
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractPrerequisite title(final @Nullable String title);
+
+  /**
+   * Gets the lore.
+   *
+   * @return the lore
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String lore();
+
+  /**
+   * Sets the lore.
+   *
+   * @param lore the new lore
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractPrerequisite lore(final @Nullable String lore);
+
+  /**
+   * Gets the icon.
+   *
+   * @return the icon
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String icon();
+
+  /**
+   * Sets the icon.
+   *
+   * @param icon the new icon
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @This @NotNull AbstractPrerequisite icon(final @Nullable String icon);
 
   /**
    * {@inheritDoc}

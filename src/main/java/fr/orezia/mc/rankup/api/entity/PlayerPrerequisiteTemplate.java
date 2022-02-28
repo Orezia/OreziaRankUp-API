@@ -105,6 +105,69 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(pure = true)
+  public @Nullable String title() {
+    return title;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerPrerequisiteTemplate title(final @Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String lore() {
+    return lore;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerPrerequisiteTemplate lore(final @Nullable String lore) {
+    this.lore = lore;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String icon() {
+    return icon;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @This @NotNull PlayerPrerequisiteTemplate icon(final @Nullable String icon) {
+    this.icon = icon;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
   public @Nullable Integer rankUpId() {
     return rankUpId;
   }
