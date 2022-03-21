@@ -6,10 +6,11 @@ import fr.orezia.mc.rankup.api.data.service.CityRankUpDataService;
 import fr.orezia.mc.rankup.api.data.service.CityRankUpTemplateDataService;
 import fr.orezia.mc.rankup.api.data.service.PlayerRankUpDataService;
 import fr.orezia.mc.rankup.api.data.service.PlayerRankUpTemplateDataService;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Entry point of the plugin OreziaRankUp.
+ * Entry point of the {@literal OreziaRankUp} plugin.
  *
  * @since 1.0
  */
@@ -22,6 +23,7 @@ public interface OreziaRankUpApi extends OreziaPluginApi {
    * @return the {@link CityRankUpDataService}.
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull CityRankUpDataService getCityRankUpDataService();
 
   /**
@@ -30,6 +32,7 @@ public interface OreziaRankUpApi extends OreziaPluginApi {
    * @return the {@link CityRankUpTemplateDataService}.
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull CityRankUpTemplateDataService getCityRankUpTemplateDataService();
 
   /**
@@ -38,6 +41,7 @@ public interface OreziaRankUpApi extends OreziaPluginApi {
    * @return the {@link PlayerRankUpDataService}.
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull PlayerRankUpDataService getPlayerRankUpDataService();
 
   /**
@@ -46,6 +50,7 @@ public interface OreziaRankUpApi extends OreziaPluginApi {
    * @return the {@link PlayerRankUpTemplateDataService}.
    */
   @PublicApi
+  @Contract(pure = true)
   @NotNull PlayerRankUpTemplateDataService getPlayerRankUpTemplateDataService();
 
 }

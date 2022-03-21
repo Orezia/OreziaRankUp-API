@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity class for player prerequisite.
+ * Entity class for player prerequisites.
  *
  * @see CityPrerequisite
  * @since 1.0
@@ -25,12 +25,13 @@ public class PlayerPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   public PlayerPrerequisite() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public PlayerPrerequisite(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {

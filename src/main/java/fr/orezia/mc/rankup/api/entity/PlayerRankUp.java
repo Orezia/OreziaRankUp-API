@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity for player rank-up.
+ * Entity for player rank-ups.
  *
  * @see CityRankUp
  * @since 1.0
@@ -29,12 +29,13 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
    */
   @PublicApi
   public PlayerRankUp() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public PlayerRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -197,8 +198,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp prerequisites(
-      final @Nullable Set<@NotNull PlayerPrerequisite> prerequisites) {
+  public @This @NotNull PlayerRankUp prerequisites(final @Nullable Set<@NotNull PlayerPrerequisite> prerequisites) {
     this.prerequisites = prerequisites;
     return this;
   }

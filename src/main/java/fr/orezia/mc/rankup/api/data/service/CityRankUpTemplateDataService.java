@@ -1,6 +1,5 @@
 package fr.orezia.mc.rankup.api.data.service;
 
-
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityPrerequisiteTemplate;
 import fr.orezia.mc.rankup.api.entity.CityRankUpTemplate;
@@ -11,86 +10,82 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Data service for {@link CityRankUpTemplate city rank-up template}.
+ * Data service for {@link CityRankUpTemplate city rank-up templates}.
  *
  * @since 1.0
  */
 @PublicApi
 public interface CityRankUpTemplateDataService {
 
-  // region CityRankUpTemplate services
+  // region City rank-up templates services
 
   /**
-   * Creates, in persistence, a {@link CityRankUpTemplate city rank-up template}.
+   * Persists the given {@link CityRankUpTemplate city rank-up template}.
    *
-   * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template} data
+   * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template} to create
    */
   @PublicApi
   @Contract(mutates = "param1")
   void create(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
-   * Gets all {@link CityRankUpTemplate city rank-up template}.
+   * Gets the <u>sorted</u> {@link LinkedHashSet set} of all {@link CityRankUpTemplate city rank-up templates}.
    *
-   * @return {@link LinkedHashSet} of all {@link CityRankUpTemplate city rank-up template}
+   * @return <u>the sorted</u> {@link LinkedHashSet set} of all {@link CityRankUpTemplate city rank-up templates}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull LinkedHashSet<@NotNull CityRankUpTemplate> getAll();
 
   /**
-   * Gets all {@link CityRankUpTemplate city rank-up template} IDs.
+   * Gets the {@link Set set} of all {@link CityRankUpTemplate city rank-up template} IDs.
    *
-   * @return {@link LinkedHashSet} of all {@link CityRankUpTemplate city rank-up template} IDs
+   * @return the {@link Set set} of all {@link CityRankUpTemplate city rank-up template} IDs
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull Set<@NotNull Integer> getAllIds();
 
   /**
-   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given id.
+   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given ID.
    *
-   * @param id the id of {@link CityRankUpTemplate city rank-up template}
-   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
-   * {@code false} otherwise
+   * @param id the {@link CityRankUpTemplate city rank-up template} ID
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean exist(final @NotNull Integer id);
+  boolean exist(final int id);
 
   /**
    * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given name.
    *
-   * @param name the masculine name of {@link CityRankUpTemplate city rank-up template}
-   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
-   * {@code false} otherwise
+   * @param name the {@link CityRankUpTemplate city rank-up template} name
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean nameExist(final @NotNull String name);
 
   /**
-   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given name, except
-   * with the given ID.
+   * Checks if a {@link CityRankUpTemplate city rank-up template} exists with the given name, except with the given ID.
    *
-   * @param name the name of {@link CityRankUpTemplate city rank-up template}
-   * @param id   the {@link CityRankUpTemplate city rank-up template} ID to exclude
-   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} has been found,
-   * {@code false} otherwise
+   * @param name the {@link CityRankUpTemplate city rank-up template} name
+   * @param id   the {@link CityRankUpTemplate city rank-up template} ID
+   * @return {@code true} if a {@link CityRankUpTemplate city rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean nameExistExceptForId(final @NotNull String name, final @NotNull Integer id);
+  boolean nameExistExceptForId(final @NotNull String name, final int id);
 
   /**
-   * Gets a {@link CityRankUpTemplate city rank-up template} from its id.
+   * Gets the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID.
    *
-   * @param id the id of {@link CityRankUpTemplate city rank-up template}
+   * @param id the {@link CityRankUpTemplate city rank-up template} ID
    * @return the found {@link CityRankUpTemplate city rank-up template}
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull CityRankUpTemplate get(final @NotNull Integer id);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull CityRankUpTemplate get(final int id);
 
   /**
    * Gets the very first {@link CityRankUpTemplate city rank-up template}.
@@ -98,11 +93,11 @@ public interface CityRankUpTemplateDataService {
    * @return the very first {@link CityRankUpTemplate city rank-up template}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull CityRankUpTemplate getFirst();
 
   /**
-   * Updates the {@link CityRankUpTemplate city rank-up template}.
+   * Updates the given {@link CityRankUpTemplate city rank-up template}.
    *
    * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template}
    */
@@ -111,126 +106,118 @@ public interface CityRankUpTemplateDataService {
   void update(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**
-   * Updates the actions of {@link CityRankUpTemplate city rank-up template}.
+   * Updates the actions of the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID.
    *
-   * @param cityRankUpTemplateId the {@link CityRankUpTemplate city rank-up template} ID
-   * @param actions                the new actions
+   * @param id      the {@link CityRankUpTemplate city rank-up template} ID
+   * @param actions the new actions
    */
   @PublicApi
   @Contract
-  void updateActions(final @NotNull Integer cityRankUpTemplateId, final @Nullable String actions);
+  void updateActions(final int id, final @Nullable String actions);
 
   /**
-   * Renames the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID with
-   * the given name.
+   * Renames the {@link CityRankUpTemplate city rank-up template} corresponding to the given ID.
    *
-   * @param id   the id of {@link CityRankUpTemplate city rank-up template}
-   * @param name the name to set
+   * @param id   the {@link CityRankUpTemplate city rank-up template} ID
+   * @param name the new name
    */
   @PublicApi
   @Contract
-  void rename(final @NotNull Integer id, final @NotNull String name);
+  void rename(final int id, final @NotNull String name);
 
   // endregion
 
-  // region CityPrerequisiteTemplate services
+  // region City prerequisite templates services
 
   /**
-   * Adds a {@link CityPrerequisiteTemplate city prerequisite template} to {@link CityRankUpTemplate
-   * city rank-up template}.
+   * Persists the given {@link CityPrerequisiteTemplate city prerequisite template}.
    *
    * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite template}
-   *                                 to add
    */
   @PublicApi
   @Contract
   void addPrerequisiteTemplate(final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
-   * Gets all {@link CityPrerequisiteTemplate city prerequisite template} from {@link
-   * CityRankUpTemplate city rank-up template}.
+   * Gets the {@link Set set} of all {@link CityPrerequisiteTemplate city prerequisite templates} corresponding to the
+   * given {@link CityRankUpTemplate city rank-up template} ID.
    *
-   * @param cityRankUpTemplateId the parent {@link CityRankUpTemplate city rank-up template} ID
-   * @return {@link Set} of all {@link CityPrerequisiteTemplate city prerequisite template}
+   * @param cityRankUpTemplateId the {@link CityRankUpTemplate city rank-up template} ID
+   * @return the {@link Set set} of all {@link CityPrerequisiteTemplate city prerequisite template} corresponding to the
+   * given {@link CityRankUpTemplate city rank-up template} ID
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull Set<@NotNull CityPrerequisiteTemplate> getAllPrerequisiteTemplate(
-      final int cityRankUpTemplateId);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull Set<@NotNull CityPrerequisiteTemplate> getAllPrerequisiteTemplates(final int cityRankUpTemplateId);
 
   /**
-   * Gets all {@link CityPrerequisiteTemplate city prerequisite template} IDs from {@link
-   * CityRankUpTemplate city rank-up template}.
+   * Gets the {@link Set set} of all {@link CityPrerequisiteTemplate city prerequisite template} IDs corresponding to
+   * the given {@link CityRankUpTemplate city rank-up template} ID.
    *
-   * @param cityRankUpTemplateId the parent {@link CityRankUpTemplate city rank-up template} ID
-   * @return {@link Set} of all {@link CityPrerequisiteTemplate city prerequisite template} IDs
+   * @param cityRankUpTemplateId the {@link CityRankUpTemplate city rank-up template} ID
+   * @return the {@link Set set} of all {@link CityPrerequisiteTemplate city prerequisite template} IDs corresponding to
+   * the given {@link CityRankUpTemplate city rank-up template} ID
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull Set<@NotNull String> getAllPrerequisiteTemplateIDs(
-      final int cityRankUpTemplateId);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull Set<@NotNull String> getAllPrerequisiteTemplateIds(final int cityRankUpTemplateId);
 
   /**
-   * Checks if a {@link CityPrerequisiteTemplate city prerequisite template} exists with the given
-   * id.
+   * Checks if a {@link CityPrerequisiteTemplate city prerequisite template} exists with the given ID.
    *
-   * @param id the id of {@link CityPrerequisiteTemplate city prerequisite template}
-   * @return {@code true} if a {@link CityPrerequisiteTemplate city prerequisite template} has been
-   * found, {@code false} otherwise
+   * @param id the {@link CityPrerequisiteTemplate city prerequisite template} ID
+   * @return {@code true} if a {@link CityPrerequisiteTemplate city prerequisite template} matches, {@code false}
+   * otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean existPrerequisite(final @NotNull String id);
 
   /**
-   * Gets a {@link CityPrerequisiteTemplate city prerequisite template} from its id.
+   * Gets the {@link CityPrerequisiteTemplate city prerequisite template} corresponding to the given ID.
    *
-   * @param id the id of {@link CityPrerequisiteTemplate city prerequisite template}
+   * @param id the {@link CityPrerequisiteTemplate city prerequisite template} ID
    * @return the found {@link CityPrerequisiteTemplate city prerequisite template}
    */
   @PublicApi
+  @Contract(value = "_ -> new", pure = true)
   @NotNull CityPrerequisiteTemplate getPrerequisite(final @NotNull String id);
 
   /**
-   * Updates the {@link CityPrerequisiteTemplate city prerequisite template}.
+   * Updates the given {@link CityPrerequisiteTemplate city prerequisite template}.
    *
-   * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite
-   *                                 template}
+   * @param cityPrerequisiteTemplate the {@link CityPrerequisiteTemplate city prerequisite template}
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplate(
-      final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
+  void updatePrerequisiteTemplate(final @NotNull CityPrerequisiteTemplate cityPrerequisiteTemplate);
 
   /**
-   * Updates the {@link CityPrerequisiteTemplate city prerequisite template} query.
+   * Updates the query of the {@link CityPrerequisiteTemplate city prerequisite template} corresponding to the given
+   * ID.
    *
-   * @param cityPrerequisiteTemplateId the {@link CityPrerequisiteTemplate city prerequisite
-   *                                   template}
-   * @param query                      the new query
+   * @param id    the {@link CityPrerequisiteTemplate city prerequisite template} ID
+   * @param query the new query
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplateQuery(final @NotNull String cityPrerequisiteTemplateId,
-      final @NotNull String query);
+  void updatePrerequisiteTemplateQuery(final @NotNull String id, final @NotNull String query);
 
   /**
-   * Updates the {@link CityPrerequisiteTemplate city prerequisite template} action.
+   * Updates the action of the {@link CityPrerequisiteTemplate city prerequisite template} corresponding to the given
+   * ID.
    *
-   * @param cityPrerequisiteTemplateId the {@link CityPrerequisiteTemplate city prerequisite
-   *                                   template}
-   * @param action                     the new action, may be {@code null}
+   * @param id     the {@link CityPrerequisiteTemplate city prerequisite template} ID
+   * @param action the new action
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplateAction(final @NotNull String cityPrerequisiteTemplateId,
-      final @Nullable String action);
+  void updatePrerequisiteTemplateAction(final @NotNull String id, final @Nullable String action);
 
   /**
-   * Removes {@link CityPrerequisiteTemplate city prerequisite template} from {@link
-   * CityRankUpTemplate city rank-up template}.
+   * Removes the {@link CityPrerequisiteTemplate city prerequisite template} corresponding to the given ID.
    *
-   * @param id the ID of {@link CityPrerequisiteTemplate city prerequisite template} to remove
+   * @param id the {@link CityPrerequisiteTemplate city prerequisite template} ID
    */
   @PublicApi
   @Contract

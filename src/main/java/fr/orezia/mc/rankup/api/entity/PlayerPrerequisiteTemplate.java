@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity for player prerequisite.
+ * Entity for player prerequisites.
  *
  * @see CityPrerequisiteTemplate
  * @since 1.0
@@ -23,16 +23,16 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
    */
   @PublicApi
   public PlayerPrerequisiteTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
-  public PlayerPrerequisiteTemplate(
-      final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
+  public PlayerPrerequisiteTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     super(serialization);
   }
 

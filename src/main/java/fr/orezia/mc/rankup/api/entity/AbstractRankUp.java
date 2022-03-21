@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Abstract entity class for rank-up.
+ * Abstract entity class for rank-ups.
  *
  * @param <P> the type of {@link AbstractPrerequisite prerequisites}
  * @see PlayerRankUp
@@ -37,12 +37,13 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    * Default constructor.
    */
   AbstractRankUp() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   AbstractRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (String) requireNonNull(serialization.get("id"));
@@ -82,12 +83,12 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    * Sets the ID.
    *
    * @param id the ID to set
-   * @return the current instance
+   * @return {@code this}
    */
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @NotNull AbstractRankUp<P> id(final @NotNull String id);
+  public abstract @This @NotNull AbstractRankUp<P> id(final @NotNull String id);
 
   /**
    * Gets the player's username.
@@ -101,7 +102,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
   /**
    * Sets the player's username.
    *
-   * @param userName the new player's username
+   * @param userName the player's username to set
    * @return {@code this}
    */
   @PublicApi
@@ -120,7 +121,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
   /**
    * Sets the rank.
    *
-   * @param rank the new rank.
+   * @param rank the rank to set
    * @return {@code this}
    */
   @PublicApi
@@ -139,7 +140,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
   /**
    * Sets the next rank.
    *
-   * @param nextRank the new next rank.
+   * @param nextRank the next rank to set
    * @return {@code this}
    */
   @PublicApi
@@ -147,18 +148,18 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
   public abstract @This @NotNull AbstractRankUp<P> nextRank(final @NotNull Integer nextRank);
 
   /**
-   * Gets items as JSON.
+   * Gets the items as JSON.
    *
-   * @return items as JSON
+   * @return the items as JSON
    */
   @PublicApi
   @Contract(pure = true)
   public abstract @Nullable String items();
 
   /**
-   * Sets items as JSON.
+   * Sets the items as JSON.
    *
-   * @param items new items as JSON
+   * @param items the items to set as JSON
    * @return {@code this}
    */
   @PublicApi
@@ -178,7 +179,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    * Sets the {@link P prerequisites}.
    *
    * @param prerequisites the {@link P prerequisites} to set
-   * @return the current instance
+   * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")

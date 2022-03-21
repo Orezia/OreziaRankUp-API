@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity class for city rank-up template.
+ * Entity class for city rank-up templates.
  *
  * @see PlayerRankUpTemplate
  * @since 1.0
@@ -28,12 +28,13 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
    */
   @PublicApi
   public CityRankUpTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public CityRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -142,7 +143,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   /**
    * Sets the rank-up name.
    *
-   * @param name the new rank-up name
+   * @param name the rank-up name to set
    * @return {@code this}
    */
   @PublicApi

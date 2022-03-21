@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Abstract entity class for prerequisite template.
+ * Abstract entity class for prerequisite templates.
  *
  * @see PlayerPrerequisiteTemplate
  * @see CityPrerequisiteTemplate
@@ -32,15 +32,15 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    * Default constructor.
    */
   AbstractPrerequisiteTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
-  AbstractPrerequisiteTemplate(
-      final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
+  AbstractPrerequisiteTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (String) requireNonNull(serialization.get("id"));
     rankUpId = (Integer) requireNonNull(serialization.get("rankUpId"));
     query = (String) requireNonNull(serialization.get("query"));
@@ -80,12 +80,12 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    * Sets the ID.
    *
    * @param id the ID to set
-   * @return the current instance
+   * @return {@code this}
    */
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @NotNull AbstractPrerequisiteTemplate id(final @NotNull String id);
+  public abstract @This @NotNull AbstractPrerequisiteTemplate id(final @NotNull String id);
 
   /**
    * Gets the rank-up ID.
@@ -99,13 +99,12 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the rank-up ID.
    *
-   * @param rankUpId the new rank-up ID
+   * @param rankUpId the rank-up ID to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(
-      final @NotNull Integer rankUpId);
+  public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId);
 
   /**
    * Gets the query.
@@ -119,7 +118,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the query.
    *
-   * @param query the new query
+   * @param query the query to set
    * @return {@code this}
    */
   @PublicApi
@@ -138,7 +137,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the action.
    *
-   * @param action the new action
+   * @param action the action to set
    * @return {@code this}
    */
   @PublicApi
@@ -157,7 +156,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the title.
    *
-   * @param title the new title
+   * @param title the title to set
    * @return {@code this}
    */
   @PublicApi
@@ -176,7 +175,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the lore.
    *
-   * @param lore the new lore
+   * @param lore the lore to set
    * @return {@code this}
    */
   @PublicApi
@@ -195,7 +194,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
   /**
    * Sets the icon.
    *
-   * @param icon the new icon
+   * @param icon the icon to set
    * @return {@code this}
    */
   @PublicApi

@@ -10,116 +10,105 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Data service for {@link PlayerRankUpTemplate player rank-up template}.
+ * Data service for {@link PlayerRankUpTemplate player rank-up templates}.
  *
  * @since 1.0
  */
 @PublicApi
 public interface PlayerRankUpTemplateDataService {
 
-  // region PlayerRankUpTemplate services
+  // region Player rank-up templates services
 
   /**
-   * Creates, in persistence, a {@link PlayerRankUpTemplate player rank-up template}.
+   * Persists the given {@link PlayerRankUpTemplate player rank-up template}.
    *
-   * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template} data
+   * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template} to create
    */
   @PublicApi
   @Contract(mutates = "param1")
   void create(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
-   * Gets all {@link PlayerRankUpTemplate player rank-up template}.
+   * Gets the <u>sorted</u> {@link LinkedHashSet set} of all {@link PlayerRankUpTemplate player rank-up templates}.
    *
-   * @return {@link LinkedHashSet} of all {@link PlayerRankUpTemplate player rank-up template}
+   * @return <u>the sorted</u> {@link LinkedHashSet set} of all {@link PlayerRankUpTemplate player rank-up templates}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull LinkedHashSet<@NotNull PlayerRankUpTemplate> getAll();
 
   /**
-   * Gets all {@link PlayerRankUpTemplate player rank-up template} IDs.
+   * Gets the {@link Set set} of all {@link PlayerRankUpTemplate player rank-up template} IDs.
    *
-   * @return {@link LinkedHashSet} of all {@link PlayerRankUpTemplate player rank-up template} IDs
+   * @return the {@link Set set} of all {@link PlayerRankUpTemplate player rank-up template} IDs
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull Set<@NotNull Integer> getAllIds();
 
   /**
-   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given id.
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given ID.
    *
-   * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
-   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
-   * {@code false} otherwise
+   * @param id the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean exist(final @NotNull Integer id);
+  boolean exist(final int id);
 
   /**
-   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given
-   * masculine name.
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given masculine name.
    *
-   * @param masculineName the masculine name of {@link PlayerRankUpTemplate player rank-up
-   *                      template}
-   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
-   * {@code false} otherwise
+   * @param masculineName the {@link PlayerRankUpTemplate player rank-up template} masculine name
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean masculineNameExist(final @NotNull String masculineName);
 
   /**
-   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given
-   * masculine name, except with the given ID.
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given masculine name, except with
+   * the given ID.
    *
-   * @param masculineName the masculine name of {@link PlayerRankUpTemplate player rank-up
-   *                      template}
-   * @param id            the {@link PlayerRankUpTemplate player rank-up template} ID to exclude
-   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
-   * {@code false} otherwise
+   * @param masculineName the {@link PlayerRankUpTemplate player rank-up template} masculine name
+   * @param id            the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean masculineNameExistExceptForId(final @NotNull String masculineName,
-      final @NotNull Integer id);
+  boolean masculineNameExistExceptForId(final @NotNull String masculineName, final int id);
 
   /**
-   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine
-   * name.
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine name.
    *
-   * @param feminineName the feminine name of {@link PlayerRankUpTemplate player rank-up template}
-   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
-   * {@code false} otherwise
+   * @param feminineName the {@link PlayerRankUpTemplate player rank-up template} feminine name
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean feminineNameExist(final @NotNull String feminineName);
 
   /**
-   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine
-   * name, except with the given ID.
+   * Checks if a {@link PlayerRankUpTemplate player rank-up template} exists with the given feminine name, except with
+   * the given ID.
    *
-   * @param feminineName the feminine name of {@link PlayerRankUpTemplate player rank-up template}
-   * @param id           the {@link PlayerRankUpTemplate player rank-up template} ID to exclude
-   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} has been found,
-   * {@code false} otherwise
+   * @param feminineName the {@link PlayerRankUpTemplate player rank-up template} feminine name
+   * @param id           the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @return {@code true} if a {@link PlayerRankUpTemplate player rank-up template} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
-  boolean feminineNameExistExceptForId(final @NotNull String feminineName,
-      final @NotNull Integer id);
+  boolean feminineNameExistExceptForId(final @NotNull String feminineName, final int id);
 
   /**
-   * Gets a {@link PlayerRankUpTemplate player rank-up template} from its id.
+   * Gets the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID.
    *
-   * @param id the id of {@link PlayerRankUpTemplate player rank-up template}
+   * @param id the {@link PlayerRankUpTemplate player rank-up template} ID
    * @return the found {@link PlayerRankUpTemplate player rank-up template}
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull PlayerRankUpTemplate get(final @NotNull Integer id);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull PlayerRankUpTemplate get(final int id);
 
   /**
    * Gets the very first {@link PlayerRankUpTemplate player rank-up template}.
@@ -127,11 +116,11 @@ public interface PlayerRankUpTemplateDataService {
    * @return the very first {@link PlayerRankUpTemplate player rank-up template}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "-> new", pure = true)
   @NotNull PlayerRankUpTemplate getFirst();
 
   /**
-   * Updates the {@link PlayerRankUpTemplate player rank-up template}.
+   * Updates the given {@link PlayerRankUpTemplate player rank-up template}.
    *
    * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template}
    */
@@ -140,131 +129,119 @@ public interface PlayerRankUpTemplateDataService {
   void update(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**
-   * Updates the actions of {@link PlayerRankUpTemplate player rank-up template}.
+   * Updates the actions of the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID.
    *
-   * @param playerRankUpTemplateId the {@link PlayerRankUpTemplate player rank-up template} ID
-   * @param actions                the new actions
+   * @param id      the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @param actions the new actions
    */
   @PublicApi
   @Contract
-  void updateActions(final @NotNull Integer playerRankUpTemplateId, final @Nullable String actions);
+  void updateActions(final int id, final @Nullable String actions);
 
   /**
-   * Renames the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID
-   * with the given masculine and feminine names.
+   * Renames the {@link PlayerRankUpTemplate player rank-up template} corresponding to the given ID.
    *
-   * @param id            the id of {@link PlayerRankUpTemplate player rank-up template}
-   * @param masculineName the masculine name to set
-   * @param feminineName  the feminine name to set
+   * @param id            the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @param masculineName the new masculine name
+   * @param feminineName  the new feminine name
    */
   @PublicApi
   @Contract
-  void rename(final @NotNull Integer id, final @NotNull String masculineName,
-      final @NotNull String feminineName);
+  void rename(final int id, final @NotNull String masculineName, final @NotNull String feminineName);
+
   // endregion
 
-  // region PlayerPrerequisiteTemplate services
+  // region Player prerequisite templates services
 
   /**
-   * Adds a {@link PlayerPrerequisiteTemplate player prerequisite template} to {@link
-   * PlayerRankUpTemplate player rank-up template}.
+   * Persists the given {@link PlayerPrerequisiteTemplate player prerequisite template}.
    *
-   * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
-   *                                   template} to add
+   * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite template}
    */
   @PublicApi
   @Contract
-  void addPrerequisiteTemplate(
-      final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
+  void addPrerequisiteTemplate(final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**
-   * Gets all {@link PlayerPrerequisiteTemplate player prerequisite template} from {@link
-   * PlayerRankUpTemplate player rank-up template}.
+   * Gets the {@link Set set} of all {@link PlayerPrerequisiteTemplate player prerequisite templates} corresponding to
+   * the given {@link PlayerRankUpTemplate player rank-up template} ID.
    *
-   * @param playerRankUpTemplateId the parent {@link PlayerRankUpTemplate player rank-up template}
-   *                               ID
-   * @return {@link Set} of all {@link PlayerPrerequisiteTemplate player prerequisite template}
+   * @param playerRankUpTemplateId the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @return the {@link Set set} of all {@link PlayerPrerequisiteTemplate player prerequisite template} corresponding to
+   * the given {@link PlayerRankUpTemplate player rank-up template} ID
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull Set<@NotNull PlayerPrerequisiteTemplate> getAllPrerequisiteTemplate(
-      final int playerRankUpTemplateId);
-
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull Set<@NotNull PlayerPrerequisiteTemplate> getAllPrerequisiteTemplates(final int playerRankUpTemplateId);
 
   /**
-   * Gets all {@link PlayerPrerequisiteTemplate player prerequisite template} IDs from {@link
-   * PlayerRankUpTemplate player rank-up template}.
+   * Gets the {@link Set set} of all {@link PlayerPrerequisiteTemplate player prerequisite template} IDs corresponding
+   * to the given {@link PlayerRankUpTemplate player rank-up template} ID.
    *
-   * @param playerRankUpTemplateId the parent {@link PlayerRankUpTemplate player rank-up template}
-   *                               ID
-   * @return {@link Set} of all {@link PlayerPrerequisiteTemplate player prerequisite template} IDs
+   * @param playerRankUpTemplateId the {@link PlayerRankUpTemplate player rank-up template} ID
+   * @return the {@link Set set} of all {@link PlayerPrerequisiteTemplate player prerequisite template} IDs
+   * corresponding to the given {@link PlayerRankUpTemplate player rank-up template} ID
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull Set<@NotNull String> getAllPrerequisiteTemplateIDs(
-      final int playerRankUpTemplateId);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull Set<@NotNull String> getAllPrerequisiteTemplateIds(final int playerRankUpTemplateId);
 
   /**
-   * Checks if a {@link PlayerPrerequisiteTemplate player prerequisite template} exists with the
-   * given id.
+   * Checks if a {@link PlayerPrerequisiteTemplate player prerequisite template} exists with the given ID.
    *
-   * @param id the id of {@link PlayerPrerequisiteTemplate player prerequisite template}
-   * @return {@code true} if a {@link PlayerPrerequisiteTemplate player prerequisite template} has
-   * been found, {@code false} otherwise
+   * @param id the {@link PlayerPrerequisiteTemplate player prerequisite template} ID
+   * @return {@code true} if a {@link PlayerPrerequisiteTemplate player prerequisite template} matches, {@code false}
+   * otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean existPrerequisite(final @NotNull String id);
 
   /**
-   * Gets a {@link PlayerPrerequisiteTemplate player prerequisite template} from its id.
+   * Gets the {@link PlayerPrerequisiteTemplate player prerequisite template} corresponding to the given ID.
    *
-   * @param id the id of {@link PlayerPrerequisiteTemplate player prerequisite template}
+   * @param id the {@link PlayerPrerequisiteTemplate player prerequisite template} ID
    * @return the found {@link PlayerPrerequisiteTemplate player prerequisite template}
    */
   @PublicApi
+  @Contract(value = "_ -> new", pure = true)
   @NotNull PlayerPrerequisiteTemplate getPrerequisite(final @NotNull String id);
 
   /**
-   * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template}.
+   * Updates the given {@link PlayerPrerequisiteTemplate player prerequisite template}.
    *
-   * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite
-   *                                   template}
+   * @param playerPrerequisiteTemplate the {@link PlayerPrerequisiteTemplate player prerequisite template}
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplate(
-      final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
+  void updatePrerequisiteTemplate(final @NotNull PlayerPrerequisiteTemplate playerPrerequisiteTemplate);
 
   /**
-   * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template} query.
+   * Updates the query of the {@link PlayerPrerequisiteTemplate player prerequisite template} corresponding to the given
+   * ID.
    *
-   * @param playerPrerequisiteTemplateId the {@link PlayerPrerequisiteTemplate player prerequisite
-   *                                     template}
-   * @param query                        the new query
+   * @param id    the {@link PlayerPrerequisiteTemplate player prerequisite template} ID
+   * @param query the new query
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplateQuery(final @NotNull String playerPrerequisiteTemplateId,
-      final @NotNull String query);
+  void updatePrerequisiteTemplateQuery(final @NotNull String id, final @NotNull String query);
 
   /**
-   * Updates the {@link PlayerPrerequisiteTemplate player prerequisite template} action.
+   * Updates the action of the {@link PlayerPrerequisiteTemplate player prerequisite template} corresponding to the
+   * given ID.
    *
-   * @param playerPrerequisiteTemplateId the {@link PlayerPrerequisiteTemplate player prerequisite
-   *                                     template}
-   * @param action                       the new action, may be {@code null}
+   * @param id     the {@link PlayerPrerequisiteTemplate player prerequisite template} ID
+   * @param action the new action
    */
   @PublicApi
   @Contract
-  void updatePrerequisiteTemplateAction(final @NotNull String playerPrerequisiteTemplateId,
-      final @Nullable String action);
+  void updatePrerequisiteTemplateAction(final @NotNull String id, final @Nullable String action);
 
   /**
-   * Removes {@link PlayerPrerequisiteTemplate player prerequisite template} from {@link
-   * PlayerRankUpTemplate player rank-up template}.
+   * Removes the {@link PlayerPrerequisiteTemplate player prerequisite template} corresponding to the given ID.
    *
-   * @param id the ID of {@link PlayerPrerequisiteTemplate player prerequisite template} to remove
+   * @param id the {@link PlayerPrerequisiteTemplate player prerequisite template} ID
    */
   @PublicApi
   @Contract

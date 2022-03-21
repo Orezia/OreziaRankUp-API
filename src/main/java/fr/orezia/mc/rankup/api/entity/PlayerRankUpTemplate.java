@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity for player rank-up template.
+ * Entity for player rank-up templates.
  *
  * @see CityRankUpTemplate
  * @since 1.0
@@ -29,12 +29,13 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
    */
   @PublicApi
   public PlayerRankUpTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public PlayerRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -155,7 +156,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   /**
    * Sets the masculine name.
    *
-   * @param masculineName the new masculine name
+   * @param masculineName the masculine name to set
    * @return {@code this}
    */
   @PublicApi
@@ -179,7 +180,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   /**
    * Sets the feminine name.
    *
-   * @param feminineName the new feminine name
+   * @param feminineName the feminine name to set
    * @return {@code this}
    */
   @PublicApi

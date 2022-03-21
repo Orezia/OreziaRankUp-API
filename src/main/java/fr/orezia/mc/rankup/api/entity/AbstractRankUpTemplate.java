@@ -15,15 +15,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Abstract entity class for rank-up template.
+ * Abstract entity class for rank-up templates.
  *
  * @param <P> the type of {@link AbstractPrerequisiteTemplate prerequisites}
  * @see CityRankUpTemplate
  * @see PlayerRankUpTemplate
  * @since 1.0
  */
-abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
-    implements ConfigurationSerializable {
+abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> implements ConfigurationSerializable {
 
   Integer id;
   Integer nextId;
@@ -37,12 +36,13 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    * Default constructor.
    */
   AbstractRankUpTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   AbstractRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (Integer) requireNonNull(serialization.get("id"));
@@ -80,12 +80,12 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    * Sets the ID.
    *
    * @param id the ID to set
-   * @return the current instance
+   * @return {@code this}
    */
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @NotNull AbstractRankUpTemplate<P> id(final @NotNull Integer id);
+  public abstract @This @NotNull AbstractRankUpTemplate<P> id(final @NotNull Integer id);
 
   /**
    * Gets the previous rank-up ID.
@@ -99,7 +99,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
   /**
    * Sets the next rank-up ID.
    *
-   * @param nextId the new next rank-up ID
+   * @param nextId the next rank-up ID to set
    * @return {@code this}
    */
   @PublicApi
@@ -108,18 +108,18 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
       final @Nullable Integer nextId);
 
   /**
-   * Gets items as JSON.
+   * Gets the items as JSON.
    *
-   * @return items as JSON
+   * @return the items as JSON
    */
   @PublicApi
   @Contract(pure = true)
   public abstract @Nullable String items();
 
   /**
-   * Sets items as JSON.
+   * Sets the items as JSON.
    *
-   * @param items new items as JSON
+   * @param items the items to set as JSON
    * @return {@code this}
    */
   @PublicApi
@@ -158,7 +158,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate>
    * Sets the {@link P prerequisites}.
    *
    * @param prerequisites the {@link P prerequisites} to set
-   * @return the current instance
+   * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
