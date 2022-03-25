@@ -57,6 +57,16 @@ public interface CityRankUpDataService {
   void update(final @NotNull CityRankUp cityRankUp);
 
   /**
+   * Updates the userName for the {@link CityRankUp city rank-up} corresponding to the given ID.
+   *
+   * @param playerId the {@link Player player} unique ID
+   * @param userName the userName to set
+   */
+  @PublicApi
+  @Contract
+  void updateUserName(String playerId, String userName);
+
+  /**
    * Deletes the {@link CityRankUp city rank-up} corresponding to the given ID.
    *
    * @param id the {@link CityRankUp city rank-up} ID

@@ -68,6 +68,16 @@ public interface PlayerRankUpDataService {
   void updateGender(final @NotNull String id, final @NotNull Gender gender);
 
   /**
+   * Updates the username of the {@link PlayerRankUp player rank-up} corresponding to the given ID.
+   *
+   * @param id       the {@link PlayerRankUp player rank-up} ID
+   * @param userName the new username
+   */
+  @PublicApi
+  @Contract
+  void updateUserName(final @NotNull String id, final @NotNull String userName);
+
+  /**
    * Deletes the {@link PlayerRankUp player rank-up} corresponding to the given ID.
    *
    * @param id the {@link PlayerRankUp player rank-up} ID
