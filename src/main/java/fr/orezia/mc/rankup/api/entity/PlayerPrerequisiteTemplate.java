@@ -3,7 +3,6 @@ package fr.orezia.mc.rankup.api.entity;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -52,7 +51,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate id(final @NotNull String id) {
+  public @NotNull PlayerPrerequisiteTemplate id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -73,7 +72,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate query(final @NotNull String query) {
+  public @NotNull PlayerPrerequisiteTemplate query(final @NotNull String query) {
     this.query = query;
     return this;
   }
@@ -94,7 +93,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate action(final @Nullable String action) {
+  public @NotNull PlayerPrerequisiteTemplate action(final @Nullable String action) {
     this.action = action;
     return this;
   }
@@ -115,7 +114,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate title(final @Nullable String title) {
+  public @NotNull PlayerPrerequisiteTemplate title(final @Nullable String title) {
     this.title = title;
     return this;
   }
@@ -136,7 +135,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate lore(final @Nullable String lore) {
+  public @NotNull PlayerPrerequisiteTemplate lore(final @Nullable String lore) {
     this.lore = lore;
     return this;
   }
@@ -157,7 +156,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate icon(final @Nullable String icon) {
+  public @NotNull PlayerPrerequisiteTemplate icon(final @Nullable String icon) {
     this.icon = icon;
     return this;
   }
@@ -178,7 +177,7 @@ public class PlayerPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId) {
+  public @NotNull PlayerPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId) {
     this.rankUpId = rankUpId;
     return this;
   }

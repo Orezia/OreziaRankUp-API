@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -87,7 +86,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite id(final @NotNull String id);
+  public abstract @NotNull AbstractPrerequisite id(final @NotNull String id);
 
   /**
    * Gets the {@link Player player} unique ID.
@@ -106,7 +105,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite playerId(final @NotNull String playerId);
+  public abstract @NotNull AbstractPrerequisite playerId(final @NotNull String playerId);
 
   /**
    * Gets the query.
@@ -125,7 +124,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite query(final @NotNull String query);
+  public abstract @NotNull AbstractPrerequisite query(final @NotNull String query);
 
   /**
    * Gets the action.
@@ -144,7 +143,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite action(final @Nullable String action);
+  public abstract @NotNull AbstractPrerequisite action(final @Nullable String action);
 
   /**
    * Gets the title.
@@ -163,7 +162,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite title(final @Nullable String title);
+  public abstract @NotNull AbstractPrerequisite title(final @Nullable String title);
 
   /**
    * Gets the lore.
@@ -182,7 +181,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite lore(final @Nullable String lore);
+  public abstract @NotNull AbstractPrerequisite lore(final @Nullable String lore);
 
   /**
    * Gets the icon.
@@ -201,7 +200,7 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite icon(final @Nullable String icon);
+  public abstract @NotNull AbstractPrerequisite icon(final @Nullable String icon);
 
   /**
    * {@inheritDoc}

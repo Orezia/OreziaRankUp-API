@@ -25,7 +25,7 @@ public interface CityRankUpTemplateDataService {
    * @param cityRankUpTemplate the {@link CityRankUpTemplate city rank-up template} to create
    */
   @PublicApi
-  @Contract(mutates = "param1")
+  @Contract
   void create(final @NotNull CityRankUpTemplate cityRankUpTemplate);
 
   /**

@@ -25,7 +25,7 @@ public interface PlayerRankUpTemplateDataService {
    * @param playerRankUpTemplate the {@link PlayerRankUpTemplate player rank-up template} to create
    */
   @PublicApi
-  @Contract(mutates = "param1")
+  @Contract
   void create(final @NotNull PlayerRankUpTemplate playerRankUpTemplate);
 
   /**

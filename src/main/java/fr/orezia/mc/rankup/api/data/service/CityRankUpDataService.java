@@ -24,7 +24,7 @@ public interface CityRankUpDataService {
    * @param cityRankUp the {@link CityRankUp city rank-up} to create
    */
   @PublicApi
-  @Contract(mutates = "param1")
+  @Contract
   void create(final @NotNull CityRankUp cityRankUp);
 
   /**

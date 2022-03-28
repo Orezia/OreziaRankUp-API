@@ -6,7 +6,6 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -85,7 +84,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate id(final @NotNull String id);
+  public abstract @NotNull AbstractPrerequisiteTemplate id(final @NotNull String id);
 
   /**
    * Gets the rank-up ID.
@@ -104,7 +103,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId);
+  public abstract @NotNull AbstractPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId);
 
   /**
    * Gets the query.
@@ -123,7 +122,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate query(final @NotNull String query);
+  public abstract @NotNull AbstractPrerequisiteTemplate query(final @NotNull String query);
 
   /**
    * Gets the action.
@@ -142,7 +141,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate action(final @Nullable String action);
+  public abstract @NotNull AbstractPrerequisiteTemplate action(final @Nullable String action);
 
   /**
    * Gets the title.
@@ -161,7 +160,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate title(final @Nullable String title);
+  public abstract @NotNull AbstractPrerequisiteTemplate title(final @Nullable String title);
 
   /**
    * Gets the lore.
@@ -180,7 +179,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate lore(final @Nullable String lore);
+  public abstract @NotNull AbstractPrerequisiteTemplate lore(final @Nullable String lore);
 
   /**
    * Gets the icon.
@@ -199,7 +198,7 @@ abstract class AbstractPrerequisiteTemplate implements ConfigurationSerializable
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisiteTemplate icon(final @Nullable String icon);
+  public abstract @NotNull AbstractPrerequisiteTemplate icon(final @Nullable String icon);
 
   /**
    * {@inheritDoc}

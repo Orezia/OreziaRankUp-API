@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -88,7 +87,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> id(final @NotNull String id);
+  public abstract @NotNull AbstractRankUp<P> id(final @NotNull String id);
 
   /**
    * Gets the player's username.
@@ -107,7 +106,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> userName(final String userName);
+  public abstract @NotNull AbstractRankUp<P> userName(final String userName);
 
   /**
    * Gets the rank.
@@ -126,7 +125,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> rank(final @NotNull Integer rank);
+  public abstract @NotNull AbstractRankUp<P> rank(final @NotNull Integer rank);
 
   /**
    * Gets the next rank.
@@ -145,7 +144,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> nextRank(final @NotNull Integer nextRank);
+  public abstract @NotNull AbstractRankUp<P> nextRank(final @NotNull Integer nextRank);
 
   /**
    * Gets the items as JSON.
@@ -164,7 +163,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> items(final @Nullable String items);
+  public abstract @NotNull AbstractRankUp<P> items(final @Nullable String items);
 
   /**
    * Gets the {@link P prerequisites}.
@@ -183,8 +182,7 @@ abstract class AbstractRankUp<P extends AbstractPrerequisite> implements Configu
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUp<P> prerequisites(
-      final @Nullable Set<@NotNull P> prerequisites);
+  public abstract @NotNull AbstractRankUp<P> prerequisites(final @Nullable Set<@NotNull P> prerequisites);
 
   /**
    * {@inheritDoc}

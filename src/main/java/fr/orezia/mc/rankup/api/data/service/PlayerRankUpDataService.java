@@ -25,7 +25,7 @@ public interface PlayerRankUpDataService {
    * @param playerRankUp the {@link PlayerRankUp player rank-up} to create
    */
   @PublicApi
-  @Contract(mutates = "param1")
+  @Contract
   void create(final @NotNull PlayerRankUp playerRankUp);
 
   /**

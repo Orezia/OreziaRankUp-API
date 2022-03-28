@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -85,7 +84,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> im
 
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate<P> id(final @NotNull Integer id);
+  public abstract @NotNull AbstractRankUpTemplate<P> id(final @NotNull Integer id);
 
   /**
    * Gets the previous rank-up ID.
@@ -104,8 +103,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> im
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate<P> nextId(
-      final @Nullable Integer nextId);
+  public abstract @NotNull AbstractRankUpTemplate<P> nextId(final @Nullable Integer nextId);
 
   /**
    * Gets the items as JSON.
@@ -124,7 +122,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> im
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate<P> items(final @Nullable String items);
+  public abstract @NotNull AbstractRankUpTemplate<P> items(final @Nullable String items);
 
   /**
    * Gets rank-up' actions.
@@ -143,7 +141,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> im
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate<P> actions(final @Nullable String actions);
+  public abstract @NotNull AbstractRankUpTemplate<P> actions(final @Nullable String actions);
 
   /**
    * Gets the {@link P prerequisites}.
@@ -162,8 +160,7 @@ abstract class AbstractRankUpTemplate<P extends AbstractPrerequisiteTemplate> im
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractRankUpTemplate<P> prerequisites(
-      final @Nullable Set<@NotNull P> prerequisites);
+  public abstract @NotNull AbstractRankUpTemplate<P> prerequisites(final @Nullable Set<@NotNull P> prerequisites);
 
   /**
    * {@inheritDoc}

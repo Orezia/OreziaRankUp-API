@@ -3,7 +3,6 @@ package fr.orezia.mc.rankup.api.entity;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,7 +52,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate id(final @NotNull String id) {
+  public @NotNull CityPrerequisiteTemplate id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -74,7 +73,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate query(final @NotNull String query) {
+  public @NotNull CityPrerequisiteTemplate query(final @NotNull String query) {
     this.query = query;
     return this;
   }
@@ -95,7 +94,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate action(final @Nullable String action) {
+  public @NotNull CityPrerequisiteTemplate action(final @Nullable String action) {
     this.action = action;
     return this;
   }
@@ -116,7 +115,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate title(final @Nullable String title) {
+  public @NotNull CityPrerequisiteTemplate title(final @Nullable String title) {
     this.title = title;
     return this;
   }
@@ -137,7 +136,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate lore(final @Nullable String lore) {
+  public @NotNull CityPrerequisiteTemplate lore(final @Nullable String lore) {
     this.lore = lore;
     return this;
   }
@@ -158,7 +157,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate icon(final @Nullable String icon) {
+  public @NotNull CityPrerequisiteTemplate icon(final @Nullable String icon) {
     this.icon = icon;
     return this;
   }
@@ -179,7 +178,7 @@ public class CityPrerequisiteTemplate extends AbstractPrerequisiteTemplate {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId) {
+  public @NotNull CityPrerequisiteTemplate rankUpId(final @NotNull Integer rankUpId) {
     this.rankUpId = rankUpId;
     return this;
   }
