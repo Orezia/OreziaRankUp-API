@@ -6,13 +6,13 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import java.util.Objects;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.checkerframework.common.returnsreceiver.qual.This;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Abstract entity class for prerequisite.
+ * Abstract entity class for prerequisites.
  *
  * @see PlayerPrerequisiteTemplate
  * @see CityPrerequisiteTemplate
@@ -26,37 +26,46 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
   String playerId;
   String query;
   String action;
+  String title;
+  String lore;
+  String icon;
 
   /**
    * Default constructor.
    */
   AbstractPrerequisite() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
-  AbstractPrerequisite(
-      final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
+  AbstractPrerequisite(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
     id = (String) requireNonNull(serialization.get("id"));
     playerId = (String) requireNonNull(serialization.get("playerId"));
     query = (String) requireNonNull(serialization.get("query"));
     action = (String) serialization.get("action");
+    title = (String) serialization.get("title");
+    lore = (String) serialization.get("lore");
+    icon = (String) serialization.get("icon");
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  @Contract(value = " -> new", pure = true)
+  @Contract(value = "-> new", pure = true)
   public @NotNull Map<@NotNull String, @Nullable Object> serialize() {
     return Map.of(
         "id", id,
         "playerId", playerId,
         "query", query,
-        "action", action
+        "action", action,
+        "title", title,
+        "lore", lore,
+        "icon", icon
     );
   }
 
@@ -73,31 +82,30 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
    * Sets the ID.
    *
    * @param id the ID to set
-   * @return the current instance
+   * @return {@code this}
    */
-
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
   public abstract @NotNull AbstractPrerequisite id(final @NotNull String id);
 
   /**
-   * Gets the player UUID.
+   * Gets the {@link Player player} unique ID.
    *
-   * @return the player UUID.
+   * @return the {@link Player player} unique ID.
    */
   @PublicApi
   @Contract(pure = true)
   public abstract @NotNull String playerId();
 
   /**
-   * Sets the player UUID.
+   * Sets the {@link Player player} unique ID.
    *
-   * @param playerId the new player UUID
+   * @param playerId the {@link Player player} unique ID to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite playerId(final @NotNull String playerId);
+  public abstract @NotNull AbstractPrerequisite playerId(final @NotNull String playerId);
 
   /**
    * Gets the query.
@@ -111,12 +119,12 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
   /**
    * Sets the query.
    *
-   * @param query the new query
+   * @param query the query to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite query(final @NotNull String query);
+  public abstract @NotNull AbstractPrerequisite query(final @NotNull String query);
 
   /**
    * Gets the action.
@@ -130,12 +138,69 @@ abstract class AbstractPrerequisite implements ConfigurationSerializable {
   /**
    * Sets the action.
    *
-   * @param action the new action
+   * @param action the action to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public abstract @This @NotNull AbstractPrerequisite action(final @Nullable String action);
+  public abstract @NotNull AbstractPrerequisite action(final @Nullable String action);
+
+  /**
+   * Gets the title.
+   *
+   * @return the title
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String title();
+
+  /**
+   * Sets the title.
+   *
+   * @param title the title to set
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractPrerequisite title(final @Nullable String title);
+
+  /**
+   * Gets the lore.
+   *
+   * @return the lore
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String lore();
+
+  /**
+   * Sets the lore.
+   *
+   * @param lore the lore to set
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractPrerequisite lore(final @Nullable String lore);
+
+  /**
+   * Gets the icon.
+   *
+   * @return the icon
+   */
+  @PublicApi
+  @Contract(pure = true)
+  public abstract @Nullable String icon();
+
+  /**
+   * Sets the icon.
+   *
+   * @param icon the icon to set
+   * @return {@code this}
+   */
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public abstract @NotNull AbstractPrerequisite icon(final @Nullable String icon);
 
   /**
    * {@inheritDoc}

@@ -1,56 +1,55 @@
 package fr.orezia.mc.rankup.api.data.service;
 
 import fr.orezia.mc.core.api.annotation.PublicApi;
-import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import fr.orezia.mc.rankup.api.entity.Gender;
 import fr.orezia.mc.rankup.api.entity.PlayerPrerequisite;
 import fr.orezia.mc.rankup.api.entity.PlayerRankUp;
 import java.util.Set;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Data service for {@link CityRankUp player rank-up}.
+ * Data service for {@link PlayerRankUp player rank-ups}.
  *
  * @since 1.0
  */
 @PublicApi
 public interface PlayerRankUpDataService {
 
-  // region PlayerRankUp services
+  // region Player rank-ups services
 
   /**
-   * Creates, in persistence, a {@link PlayerRankUp player rank-up}.
+   * Persists the given {@link PlayerRankUp player rank-up}.
    *
-   * @param playerRankUp the {@link PlayerRankUp player rank-up} data
+   * @param playerRankUp the {@link PlayerRankUp player rank-up} to create
    */
   @PublicApi
   @Contract
   void create(final @NotNull PlayerRankUp playerRankUp);
 
   /**
-   * Checks if a {@link PlayerRankUp player rank-up} exists with the given id.
+   * Checks if a {@link PlayerRankUp player rank-up} exists with the given ID.
    *
-   * @param id the id of {@link PlayerRankUp player rank-up}
-   * @return {@code true} if a {@link PlayerRankUp player rank-up} has been found, {@code false}
-   * otherwise
+   * @param id the {@link PlayerRankUp player rank-up} ID
+   * @return {@code true} if a {@link PlayerRankUp player rank-up} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean exist(final @NotNull String id);
 
   /**
-   * Gets a {@link PlayerRankUp player rank-up} from its id.
+   * Gets the {@link PlayerRankUp player rank-up} corresponding to the given ID.
    *
-   * @param id the id of {@link PlayerRankUp player rank-up}
+   * @param id the {@link PlayerRankUp player rank-up} ID
    * @return the found {@link PlayerRankUp player rank-up}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "_ -> new", pure = true)
   @NotNull PlayerRankUp get(final @NotNull String id);
 
   /**
-   * Updates the {@link PlayerRankUp player rank-up}.
+   * Updates the given {@link PlayerRankUp player rank-up}.
    *
    * @param playerRankUp the {@link PlayerRankUp player rank-up}
    */
@@ -59,20 +58,19 @@ public interface PlayerRankUpDataService {
   void update(final @NotNull PlayerRankUp playerRankUp);
 
   /**
-   * Updates the {@link Gender gender} of the {@link PlayerRankUp player rank-up} corresponding to
-   * the given ID.
+   * Updates the {@link Gender gender} of the {@link PlayerRankUp player rank-up} corresponding to the given ID.
    *
    * @param id     the {@link PlayerRankUp player rank-up} ID
-   * @param gender the {@link Gender gender} to set
+   * @param gender the new {@link Gender gender}
    */
   @PublicApi
   @Contract
   void updateGender(final @NotNull String id, final @NotNull Gender gender);
 
   /**
-   * Deletes {@link PlayerRankUp player rank-up}.
+   * Deletes the {@link PlayerRankUp player rank-up} corresponding to the given ID.
    *
-   * @param id the {@link PlayerRankUp player rank-up} id
+   * @param id the {@link PlayerRankUp player rank-up} ID
    */
   @PublicApi
   @Contract
@@ -80,12 +78,12 @@ public interface PlayerRankUpDataService {
 
   // endregion
 
-  // region PlayerPrerequisite services
+  // region Player prerequisites services
 
   /**
-   * Adds a {@link PlayerPrerequisite player prerequisite}.
+   * Persists the given {@link PlayerPrerequisite player prerequisite}.
    *
-   * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite} to add
+   * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite}
    */
   @PublicApi
   @Contract
@@ -99,35 +97,34 @@ public interface PlayerRankUpDataService {
    */
   @PublicApi
   @Contract(pure = true)
-  @NotNull Set<@NotNull PlayerPrerequisite> getAllPrerequisite(
-      final @NotNull String playerId);
+  @NotNull Set<@NotNull PlayerPrerequisite> getAllPrerequisites(final @NotNull String playerId);
 
   /**
-   * Checks if a {@link PlayerPrerequisite player prerequisite} exists with the given id.
+   * Checks if a {@link PlayerPrerequisite player prerequisite} exists with the given ID and {@link Player player}
+   * unique ID.
    *
-   * @param id       the id of {@link PlayerPrerequisite player prerequisite}
-   * @param playerId the player ID
-   * @return {@code true} if a {@link PlayerPrerequisite player prerequisite} has been found, {@code
-   * false} otherwise
+   * @param id       the {@link PlayerPrerequisite player prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
+   * @return {@code true} if a {@link PlayerPrerequisite player prerequisite} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean existPrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   /**
-   * Gets a {@link PlayerPrerequisite player prerequisite} from its id.
+   * Gets the {@link PlayerPrerequisite player prerequisite} corresponding to the given ID and {@link Player player}
+   * unique ID.
    *
-   * @param id       the id of {@link PlayerPrerequisite player prerequisite}
-   * @param playerId the player ID
+   * @param id       the {@link PlayerPrerequisite player prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
    * @return the found {@link PlayerPrerequisite player prerequisite}
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull PlayerPrerequisite getPrerequisite(final @NotNull String id,
-      final @NotNull String playerId);
+  @Contract(value = "_, _ -> new", pure = true)
+  @NotNull PlayerPrerequisite getPrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   /**
-   * Updates the {@link PlayerPrerequisite player prerequisite}.
+   * Updates the given {@link PlayerPrerequisite player prerequisite}.
    *
    * @param playerPrerequisite the {@link PlayerPrerequisite player prerequisite}
    */
@@ -136,10 +133,11 @@ public interface PlayerRankUpDataService {
   void updatePrerequisite(final @NotNull PlayerPrerequisite playerPrerequisite);
 
   /**
-   * Removes {@link PlayerPrerequisite player prerequisite} from {@link CityRankUp player rank-up}.
+   * Deletes the {@link PlayerPrerequisite player prerequisite} corresponding to the given ID and {@link Player player}
+   * unique ID.
    *
-   * @param id       the ID of {@link PlayerPrerequisite player prerequisite} to remove
-   * @param playerId the player ID
+   * @param id       the {@link PlayerPrerequisite player prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
    */
   @PublicApi
   @Contract

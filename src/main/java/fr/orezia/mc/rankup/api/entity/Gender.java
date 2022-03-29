@@ -3,7 +3,7 @@ package fr.orezia.mc.rankup.api.entity;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 
 /**
- * Enum for gender.
+ * Enumeration of the genders.
  *
  * @since 1.0
  */

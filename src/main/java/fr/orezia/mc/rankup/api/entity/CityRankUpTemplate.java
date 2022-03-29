@@ -6,13 +6,12 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import java.util.Set;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity class for city rank-up template.
+ * Entity class for city rank-up templates.
  *
  * @see PlayerRankUpTemplate
  * @since 1.0
@@ -28,12 +27,13 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
    */
   @PublicApi
   public CityRankUpTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public CityRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -57,7 +57,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityRankUpTemplate id(final @NotNull Integer id) {
+  public @NotNull CityRankUpTemplate id(final @NotNull Integer id) {
     this.id = id;
     return this;
   }
@@ -79,7 +79,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityRankUpTemplate nextId(final @Nullable Integer nextId) {
+  public @NotNull CityRankUpTemplate nextId(final @Nullable Integer nextId) {
     this.nextId = nextId;
     return this;
   }
@@ -101,7 +101,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityRankUpTemplate items(final @Nullable String items) {
+  public @NotNull CityRankUpTemplate items(final @Nullable String items) {
     this.items = items;
     return this;
   }
@@ -123,7 +123,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityRankUpTemplate actions(final @Nullable String actions) {
+  public @NotNull CityRankUpTemplate actions(final @Nullable String actions) {
     this.actions = actions;
     return this;
   }
@@ -142,12 +142,12 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   /**
    * Sets the rank-up name.
    *
-   * @param name the new rank-up name
+   * @param name the rank-up name to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(mutates = "this")
-  public @This @NotNull CityRankUpTemplate name(final @NotNull String name) {
+  public @NotNull CityRankUpTemplate name(final @NotNull String name) {
     this.name = name;
     return this;
   }
@@ -168,7 +168,7 @@ public class CityRankUpTemplate extends AbstractRankUpTemplate<CityPrerequisiteT
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityRankUpTemplate prerequisites(
+  public @NotNull CityRankUpTemplate prerequisites(
       final @Nullable Set<@NotNull CityPrerequisiteTemplate> prerequisites) {
     this.prerequisites = prerequisites;
     return this;

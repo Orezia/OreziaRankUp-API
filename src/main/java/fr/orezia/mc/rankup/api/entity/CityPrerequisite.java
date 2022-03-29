@@ -5,13 +5,12 @@ import static java.util.Objects.requireNonNull;
 import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity class for city prerequisite.
+ * Entity class for city prerequisites.
  *
  * @see PlayerPrerequisite
  * @since 1.0
@@ -25,12 +24,13 @@ public class CityPrerequisite extends AbstractPrerequisite {
    */
   @PublicApi
   public CityPrerequisite() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public CityPrerequisite(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -66,7 +66,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisite id(final @NotNull String id) {
+  public @NotNull CityPrerequisite id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -87,7 +87,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
+  public @NotNull CityPrerequisite playerId(final @NotNull String playerId) {
     this.playerId = playerId;
     return this;
   }
@@ -108,7 +108,7 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisite query(final @NotNull String query) {
+  public @NotNull CityPrerequisite query(final @NotNull String query) {
     this.query = query;
     return this;
   }
@@ -129,8 +129,71 @@ public class CityPrerequisite extends AbstractPrerequisite {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull CityPrerequisite action(final @Nullable String action) {
+  public @NotNull CityPrerequisite action(final @Nullable String action) {
     this.action = action;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String title() {
+    return title;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @NotNull CityPrerequisite title(final @Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String lore() {
+    return lore;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @NotNull CityPrerequisite lore(final @Nullable String lore) {
+    this.lore = lore;
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(pure = true)
+  public @Nullable String icon() {
+    return icon;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @PublicApi
+  @Contract(value = "_ -> this", mutates = "this")
+  public @NotNull CityPrerequisite icon(final @Nullable String icon) {
+    this.icon = icon;
     return this;
   }
 

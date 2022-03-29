@@ -4,51 +4,51 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import fr.orezia.mc.rankup.api.entity.CityPrerequisite;
 import fr.orezia.mc.rankup.api.entity.CityRankUp;
 import java.util.Set;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Data service for {@link CityRankUp city rank-up}.
+ * Data service for {@link CityRankUp city rank-ups}.
  *
  * @since 1.0
  */
 @PublicApi
 public interface CityRankUpDataService {
 
-  // region CityRankUp services
+  // region City rank-ups services
 
   /**
-   * Creates in persistence a {@link CityRankUp city rank-up}.
+   * Persists the given {@link CityRankUp city rank-up}.
    *
-   * @param cityRankUp the {@link CityRankUp city rank-up} data
+   * @param cityRankUp the {@link CityRankUp city rank-up} to create
    */
   @PublicApi
   @Contract
   void create(final @NotNull CityRankUp cityRankUp);
 
   /**
-   * Checks if a {@link CityRankUp city rank-up} exists with the given id.
+   * Checks if a {@link CityRankUp city rank-up} exists with the given ID.
    *
-   * @param id the id of {@link CityRankUp city rank-up}
-   * @return {@code true} if a {@link CityRankUp city rank-up} has been found, {@code false}
-   * otherwise
+   * @param id the {@link CityRankUp city rank-up} ID
+   * @return {@code true} if a {@link CityRankUp city rank-up} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean exist(final @NotNull String id);
 
   /**
-   * Gets a {@link CityRankUp city rank-up} from its id.
+   * Gets the {@link CityRankUp city rank-up} corresponding to the given ID.
    *
-   * @param id the id of {@link CityRankUp city rank-up}
+   * @param id the {@link CityRankUp city rank-up} ID
    * @return the found {@link CityRankUp city rank-up}
    */
   @PublicApi
-  @Contract(pure = true)
+  @Contract(value = "_ -> new", pure = true)
   @NotNull CityRankUp get(final @NotNull String id);
 
   /**
-   * Updates the {@link CityRankUp city rank-up}.
+   * Updates the given {@link CityRankUp city rank-up}.
    *
    * @param cityRankUp the {@link CityRankUp city rank-up}
    */
@@ -57,9 +57,9 @@ public interface CityRankUpDataService {
   void update(final @NotNull CityRankUp cityRankUp);
 
   /**
-   * Deletes {@link CityRankUp city rank-up}.
+   * Deletes the {@link CityRankUp city rank-up} corresponding to the given ID.
    *
-   * @param id the {@link CityRankUp city rank-up} id
+   * @param id the {@link CityRankUp city rank-up} ID
    */
   @PublicApi
   @Contract
@@ -67,53 +67,54 @@ public interface CityRankUpDataService {
 
   // endregion
 
-  // region CityPrerequisite services
+  // region City prerequisites services
 
   /**
-   * Adds a {@link CityPrerequisite city prerequisite}.
+   * Persists the given {@link CityPrerequisite city prerequisite}.
    *
-   * @param cityPrerequisite the {@link CityPrerequisite city prerequisite} to add
+   * @param cityPrerequisite the {@link CityPrerequisite city prerequisite}
    */
   @PublicApi
   @Contract
   void addPrerequisite(final @NotNull CityPrerequisite cityPrerequisite);
 
   /**
-   * Gets all {@link CityPrerequisite city prerequisite} from player ID.
+   * Gets the {@link Set set} of all the {@link CityPrerequisite city prerequisites} corresponding to the given {@link
+   * Player player} unique ID.
    *
-   * @param playerId the player ID
-   * @return {@link Set} of all {@link CityPrerequisite city prerequisite}
+   * @param playerId the {@link Player player} unique ID
+   * @return the {@link Set set} of all matching {@link CityPrerequisite city prerequisites}
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull Set<@NotNull CityPrerequisite> getAllPrerequisite(final @NotNull String playerId);
+  @Contract(value = "_ -> new", pure = true)
+  @NotNull Set<@NotNull CityPrerequisite> getAllPrerequisites(final @NotNull String playerId);
 
   /**
-   * Checks if a {@link CityPrerequisite city prerequisite} exists with the given id.
+   * Checks if a {@link CityPrerequisite city prerequisite} exists with the given ID and {@link Player player} unique
+   * ID.
    *
-   * @param id the id of {@link CityPrerequisite city prerequisite}
-   * @param playerId the player ID
-   * @return {@code true} if a {@link CityPrerequisite city prerequisite} has been found, {@code
-   * false} otherwise
+   * @param id       the {@link CityPrerequisite city prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
+   * @return {@code true} if a {@link CityPrerequisite city prerequisite} matches, {@code false} otherwise
    */
   @PublicApi
   @Contract(pure = true)
   boolean existPrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   /**
-   * Gets a {@link CityPrerequisite city prerequisite} from its id.
+   * Gets the {@link CityPrerequisite city prerequisite} corresponding to the given ID and {@link Player player} unique
+   * ID.
    *
-   * @param id       the id of {@link CityPrerequisite city prerequisite}
-   * @param playerId the player ID
+   * @param id       the {@link CityPrerequisite city prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
    * @return the found {@link CityPrerequisite city prerequisite}
    */
   @PublicApi
-  @Contract(pure = true)
-  @NotNull CityPrerequisite getPrerequisite(final @NotNull String id,
-      final @NotNull String playerId);
+  @Contract(value = "_, _ -> new", pure = true)
+  @NotNull CityPrerequisite getPrerequisite(final @NotNull String id, final @NotNull String playerId);
 
   /**
-   * Updates the {@link CityPrerequisite city prerequisite}.
+   * Updates the given {@link CityPrerequisite city prerequisite}.
    *
    * @param cityPrerequisite the {@link CityPrerequisite city prerequisite}
    */
@@ -122,10 +123,11 @@ public interface CityRankUpDataService {
   void updatePrerequisite(final @NotNull CityPrerequisite cityPrerequisite);
 
   /**
-   * Removes {@link CityPrerequisite city prerequisite} from {@link CityRankUp city rank-up}.
+   * Deletes the {@link CityPrerequisite city prerequisite} corresponding to the given ID and {@link Player player}
+   * unique ID.
    *
-   * @param id the ID of {@link CityPrerequisite city prerequisite} to remove
-   * @param playerId the player ID
+   * @param id       the {@link CityPrerequisite city prerequisite} ID
+   * @param playerId the {@link Player player} unique ID
    */
   @PublicApi
   @Contract

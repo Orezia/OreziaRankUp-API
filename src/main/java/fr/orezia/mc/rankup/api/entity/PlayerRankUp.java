@@ -7,13 +7,12 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import java.util.Set;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity for player rank-up.
+ * Entity for player rank-ups.
  *
  * @see CityRankUp
  * @since 1.0
@@ -29,12 +28,13 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
    */
   @PublicApi
   public PlayerRankUp() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public PlayerRankUp(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -68,7 +68,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp id(final @NotNull String id) {
+  public @NotNull PlayerRankUp id(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -89,7 +89,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp userName(final String userName) {
+  public @NotNull PlayerRankUp userName(final String userName) {
     this.userName = userName;
     return this;
   }
@@ -110,7 +110,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp rank(final @NotNull Integer rank) {
+  public @NotNull PlayerRankUp rank(final @NotNull Integer rank) {
     this.rank = rank;
     return this;
   }
@@ -131,7 +131,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp nextRank(final @NotNull Integer nextRank) {
+  public @NotNull PlayerRankUp nextRank(final @NotNull Integer nextRank) {
     this.nextRank = nextRank;
     return this;
   }
@@ -152,7 +152,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp items(final @Nullable String items) {
+  public @NotNull PlayerRankUp items(final @Nullable String items) {
     this.items = items;
     return this;
   }
@@ -176,7 +176,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp gender(final @NotNull Gender gender) {
+  public @NotNull PlayerRankUp gender(final @NotNull Gender gender) {
     this.gender = gender;
     return this;
   }
@@ -197,8 +197,7 @@ public class PlayerRankUp extends AbstractRankUp<PlayerPrerequisite> {
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUp prerequisites(
-      final @Nullable Set<@NotNull PlayerPrerequisite> prerequisites) {
+  public @NotNull PlayerRankUp prerequisites(final @Nullable Set<@NotNull PlayerPrerequisite> prerequisites) {
     this.prerequisites = prerequisites;
     return this;
   }

@@ -6,13 +6,12 @@ import fr.orezia.mc.core.api.annotation.PublicApi;
 import java.util.Map;
 import java.util.Set;
 import org.bukkit.configuration.serialization.SerializableAs;
-import org.checkerframework.common.returnsreceiver.qual.This;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Entity for player rank-up template.
+ * Entity for player rank-up templates.
  *
  * @see CityRankUpTemplate
  * @since 1.0
@@ -29,12 +28,13 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
    */
   @PublicApi
   public PlayerRankUpTemplate() {
+    // Nothing to do here
   }
 
   /**
    * Constructor from serialization.
    *
-   * @param serialization serialization map
+   * @param serialization the serialization map
    */
   @PublicApi
   public PlayerRankUpTemplate(final @NotNull Map<@NotNull String, @Nullable Object> serialization) {
@@ -92,7 +92,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate nextId(final @Nullable Integer nextId) {
+  public @NotNull PlayerRankUpTemplate nextId(final @Nullable Integer nextId) {
     this.nextId = nextId;
     return this;
   }
@@ -114,7 +114,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate items(final @Nullable String items) {
+  public @NotNull PlayerRankUpTemplate items(final @Nullable String items) {
     this.items = items;
     return this;
   }
@@ -136,7 +136,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate actions(final @Nullable String actions) {
+  public @NotNull PlayerRankUpTemplate actions(final @Nullable String actions) {
     this.actions = actions;
     return this;
   }
@@ -155,12 +155,12 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   /**
    * Sets the masculine name.
    *
-   * @param masculineName the new masculine name
+   * @param masculineName the masculine name to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate masculineName(final @NotNull String masculineName) {
+  public @NotNull PlayerRankUpTemplate masculineName(final @NotNull String masculineName) {
     this.masculineName = masculineName;
     return this;
   }
@@ -179,12 +179,12 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   /**
    * Sets the feminine name.
    *
-   * @param feminineName the new feminine name
+   * @param feminineName the feminine name to set
    * @return {@code this}
    */
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate feminineName(final @NotNull String feminineName) {
+  public @NotNull PlayerRankUpTemplate feminineName(final @NotNull String feminineName) {
     this.feminineName = feminineName;
     return this;
   }
@@ -205,7 +205,7 @@ public class PlayerRankUpTemplate extends AbstractRankUpTemplate<PlayerPrerequis
   @Override
   @PublicApi
   @Contract(value = "_ -> this", mutates = "this")
-  public @This @NotNull PlayerRankUpTemplate prerequisites(
+  public @NotNull PlayerRankUpTemplate prerequisites(
       final @Nullable Set<@NotNull PlayerPrerequisiteTemplate> prerequisites) {
     this.prerequisites = prerequisites;
     return this;
