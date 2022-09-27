@@ -1,7 +1,7 @@
 # Orezia Rank-Up API
 
 ![Java version](https://img.shields.io/badge/java-^17-yellow)
-![MC version](https://img.shields.io/badge/MC-v1.18.1-green)
+![MC version](https://img.shields.io/badge/MC-v1.19.2-green)
 [![GitHub release](https://img.shields.io/badge/release-vX-blue)](https://github.com/dederobert/OreziaRankUp-API/releases/tag/X)
 
 [![Maven build](https://github.com/Orezia/OreziaRankUp-API/actions/workflows/maven_build.yml/badge.svg)](https://github.com/Orezia/OreziaRankUp/actions/workflows/maven_build.yml)
